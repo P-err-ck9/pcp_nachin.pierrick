@@ -1,0 +1,254 @@
+/* ============================================================
+   STYLE.CSS - PORTEFEUILLE DE COMPÉTENCES BTS SIO
+   
+   Ce fichier contient tous les styles (CSS) de votre PCP.
+   Les commentaires vous expliquent chaque section pour que
+   vous puissiez personnaliser les couleurs, polices, espaces, etc.
+   ============================================================ */
+
+/* VARIABLES CSS - Les couleurs et dimensions principales */
+:root {
+    /* Couleurs principales - À adapter à votre préférence */
+    --couleur-primaire: #2563eb;      /* Bleu principal */
+    --couleur-secondaire: #1e40af;    /* Bleu foncé pour survolage */
+    --couleur-accent: #f59e0b;        /* Orange/Accent */
+    --couleur-fond: #f8fafc;          /* Fond très clair */
+    --couleur-texte: #1f2937;         /* Texte foncé */
+    --couleur-bordure: #e5e7eb;       /* Bordures grises */
+    
+    /* Dimensions et espacements */
+    --padding-standard: 20px;
+    --radius: 12px;                   /* Arrondi des coins */
+    --transition: 0.3s ease-in-out;   /* Durée des animations */
+}
+
+/* ============================================================
+   STYLES GLOBAUX - S'appliquent à toute la page
+   ============================================================ */
+
+/* Réinitialisation et styles de base */
+* {
+    margin: 0;                    /* Supprime les marges par défaut */
+    padding: 0;                   /* Supprime les espaces internes par défaut */
+    box-sizing: border-box;       /* Inclut padding et border dans la largeur */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Police moderne */
+    font-size: 16px;              /* Taille de base du texte */
+    color: var(--couleur-texte);  /* Couleur du texte */
+    background-color: var(--couleur-fond);  /* Couleur de fond */
+    line-height: 1.6;             /* Espacement entre les lignes */
+}
+
+/* ============================================================
+   HEADER - En-tête avec titre principal
+   ============================================================ */
+
+.header {
+    background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+    color: white;
+    padding: 60px 20px;           /* Espacement vertical et horizontal */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Ombre légère */
+}
+
+.header-content h1 {
+    font-size: 2.5rem;            /* Titre très grand */
+    margin-bottom: 10px;
+    font-weight: 700;             /* Texte gras */
+}
+
+.header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.95;                /* Légèrement transparent */
+    font-weight: 300;             /* Texte léger */
+}
+
+/* ============================================================
+   MAIN CONTENT - Contenu principal
+   ============================================================ */
+
+.main-content {
+    padding: 60px 20px;           /* Espacement haut/bas */
+}
+
+.container {
+    max-width: 1200px;            /* Largeur maximale du contenu */
+    margin: 0 auto;               /* Centrage horizontal */
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--couleur-primaire);
+}
+
+/* ============================================================
+   GRILLE DE CARTES - Disposition responsive 4 colonnes → 1
+   ============================================================ */
+
+.cards-grid {
+    display: grid;                /* Utilise CSS Grid pour la mise en page */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  /* 4 colonnes qui s'adaptent */
+    gap: 30px;                    /* Espace entre les cartes */
+    margin-bottom: 40px;
+}
+
+/* ============================================================
+   CARTES - Éléments cliquables avec effet de survol
+   ============================================================ */
+
+/* Lien de la carte (supprime le style par défaut des liens) */
+.card-link {
+    text-decoration: none;        /* Pas de soulignement */
+    color: inherit;               /* Hérite de la couleur du texte */
+    cursor: pointer;              /* Montre que c'est cliquable */
+    transition: transform var(--transition);  /* Animation au survol */
+}
+
+/* Boîte de la carte */
+.card {
+    background: white;            /* Fond blanc */
+    border-radius: var(--radius); /* Coins arrondis */
+    padding: var(--padding-standard);  /* Espacement interne */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Ombre légère */
+    border: 1px solid var(--couleur-bordure);  /* Bordure grise */
+    transition: all var(--transition);  /* Transition fluide pour tous les changements */
+    display: flex;                /* Flexbox pour organiser le contenu */
+    flex-direction: column;       /* En colonne (haut vers bas) */
+    height: 100%;                 /* Remplit la hauteur disponible */
+}
+
+/* Effet de survol sur la carte */
+.card-link:hover .card {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);  /* Ombre plus grande */
+    border-color: var(--couleur-primaire);  /* Bordure bleue */
+    transform: translateY(-8px);  /* Soulève la carte */
+}
+
+/* Icône de la carte (emoji ou image) */
+.card-icon {
+    font-size: 3rem;              /* Très grande taille d'emoji */
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Titre de la carte */
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--couleur-primaire);
+}
+
+/* Description courte de la carte */
+.card-description {
+    color: #6b7280;               /* Texte gris */
+    margin-bottom: 20px;
+    flex-grow: 1;                 /* Occupe l'espace disponible */
+    font-size: 0.95rem;
+}
+
+/* Pied de carte avec indication "En savoir plus" */
+.card-footer {
+    color: var(--couleur-primaire);
+    font-weight: 600;             /* Texte semi-gras */
+    transition: color var(--transition);
+}
+
+/* Changement de couleur au survol */
+.card-link:hover .card-footer {
+    color: var(--couleur-accent);  /* Orange */
+}
+
+/* ============================================================
+   RESPONSIVE - Adaptation pour les petits écrans
+   ============================================================ */
+
+/* Tablettes (écrans de moins de 768px) */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2rem;          /* Titre plus petit */
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Adaptation pour tablette */
+        gap: 20px;                /* Moins d'espace */
+    }
+}
+
+/* Téléphones (écrans de moins de 480px) */
+@media (max-width: 480px) {
+    .header {
+        padding: 40px 15px;       /* Moins de padding */
+    }
+
+    .header-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .main-content {
+        padding: 40px 15px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;  /* Une seule colonne sur mobile */
+        gap: 15px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}
+
+/* ============================================================
+   FOOTER - Pied de page
+   ============================================================ */
+
+.footer {
+    background: var(--couleur-primaire);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+    font-size: 0.95rem;
+}
+
+.footer a {
+    color: var(--couleur-accent);  /* Lien en orange */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   UTILITAIRES - Classes réutilisables
+   ============================================================ */
+
+/* Conteneur avec largeur max et centré */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Texte centré */
+.text-center {
+    text-align: center;
+}
+
+/* Espacement vertical */
+.margin-top {
+    margin-top: 30px;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
