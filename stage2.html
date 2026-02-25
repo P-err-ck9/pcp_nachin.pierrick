@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- À modifier : Remplacez "Premier Stage" par le titre de votre stage -->
+    <title>Premier Stage - Mon Portefeuille de Compétences</title>
+    <!-- Lien vers le fichier CSS - Utilisez le même style.css que l'accueil -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Feuille de style additionnelle pour les pages de détail (optionnel) -->
+    <style>
+        /* ============================================================
+           STYLES SPÉCIFIQUES AUX PAGES DE STAGE
+           
+           Ces styles s'ajoutent au style.css principal et personnalisent
+           les pages détaillées de stage.
+           ============================================================ */
+
+        /* Bouton de retour à l'accueil */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background-color: var(--couleur-primaire);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: background-color var(--transition);
+        }
+
+        .back-button:hover {
+            background-color: var(--couleur-secondaire);
+        }
+
+        /* En-tête de la page de détail */
+        .detail-header {
+            background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+            color: white;
+            padding: 50px 20px;
+            margin-bottom: 40px;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .detail-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .detail-header .dates {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Section de contenu avec mise en page en colonnes */
+        .detail-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;  /* Colonne principale + colonne latérale */
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Texte principal du stage */
+        .main-text h2 {
+            color: var(--couleur-primaire);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .main-text p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Barre latérale avec informations clés */
+        .sidebar {
+            background: var(--couleur-fond);
+            padding: 25px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--couleur-primaire);
+        }
+
+        .sidebar h3 {
+            color: var(--couleur-primaire);
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--couleur-bordure);
+        }
+
+        .sidebar li:last-child {
+            border-bottom: none;
+        }
+
+        /* Galerie d'images ou captures d'écran */
+        .gallery {
+            margin: 40px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: var(--couleur-fond);
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 2px dashed var(--couleur-bordure);
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+        }
+
+        .gallery-item p {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        /* Responsive pour mobile */
+        @media (max-width: 768px) {
+            .detail-content {
+                grid-template-columns: 1fr;  /* Une colonne sur mobile */
+            }
+
+            .detail-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- LIEN DE RETOUR - Permet de revenir à l'accueil -->
+    <div class="container margin-top">
+        <!-- À modifier : Vérifiez que le lien vers index.html est correct -->
+        <a href="index.html" class="back-button">← Retour à l'accueil</a>
+    </div>
+
+    <!-- EN-TÊTE DE DETAIL - Titre et dates du stage -->
+    <header class="detail-header">
+        <div class="container">
+            <!-- À modifier : Remplacez par le nom de votre entreprise/organisation -->
+            <h1>Premier Stage</h1>
+            <!-- À modifier : Remplacez les dates par les vôtres (format : du DD/MM/AAAA au DD/MM/AAAA) -->
+            <p class="dates">Du [Date de début] au [Date de fin]</p>
+        </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="main-content">
+        <div class="container">
+            <div class="detail-content">
+
+                <!-- COLONNE PRINCIPALE - Texte détaillé du stage -->
+                <section class="main-text">
+
+                    <!-- SECTION 1 : PRÉSENTATION DE L'ENTREPRISE/ORGANISATION -->
+                    <h2>🏢 Présentation de l'Entreprise</h2>
+                    <!-- À remplacer : Décrivez l'entreprise, son secteur, sa taille, etc. -->
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+
+                    <!-- SECTION 2 : VOS MISSIONS ET TÂCHES -->
+                    <h2>📋 Mes Missions</h2>
+                    <!-- À remplacer : Listez vos principales missions et responsabilités -->
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <!-- Vous pouvez ajouter une liste à puces si nécessaire -->
+                    <ul style="margin: 15px 0 15px 30px;">
+                        <li>Mission 1 : Description courte</li>
+                        <li>Mission 2 : Description courte</li>
+                        <li>Mission 3 : Description courte</li>
+                    </ul>
+
+                    <!-- SECTION 3 : COMPÉTENCES ACQUISES -->
+                    <h2>🎓 Compétences Développées</h2>
+                    <!-- À remplacer : Détaillez les compétences acquises pendant votre stage -->
+                    <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque 
+                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
+                        architecto beatae vitae dicta sunt explicabo.
+                    </p>
+
+                    <!-- SECTION 4 : TECHNOLOGIES ET OUTILS UTILISÉS -->
+                    <h2>💻 Technologies et Outils</h2>
+                    <!-- À remplacer : Listez les langages, frameworks, outils, logiciels utilisés -->
+                    <p>
+                        Pendant ce stage, j'ai utilisé les technologies suivantes :
+                    </p>
+                    <ul style="margin: 15px 0 15px 30px;">
+                        <li>Langage de programmation : [À remplir]</li>
+                        <li>Framework/Librairie : [À remplir]</li>
+                        <li>Outils : [À remplir]</li>
+                        <li>Base de données : [À remplir]</li>
+                    </ul>
+
+                    <!-- SECTION 5 : RÉALISATIONS ET PROJETS SPÉCIFIQUES -->
+                    <h2>🚀 Réalisations Principales</h2>
+                    <!-- À remplacer : Décrivez les principaux projets ou livrables -->
+                    <p>
+                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia 
+                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </p>
+
+                    <!-- GALERIE (Optionnel) - Zone pour ajouter des images, captures d'écran, etc. -->
+                    <h2>📸 Galerie</h2>
+                    <div class="gallery">
+                        <!-- À ajouter : Remplacez par vos images réelles -->
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/200" alt="Capture d'écran 1">
+                            <p>Description de l'image 1</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/200" alt="Capture d'écran 2">
+                            <p>Description de l'image 2</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/200" alt="Capture d'écran 3">
+                            <p>Description de l'image 3</p>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 6 : APPRENTISSAGES ET BILAN PERSONNEL -->
+                    <h2>💡 Apprentissages et Bilan Personnel</h2>
+                    <!-- À remplacer : Réfléchissez sur ce que vous avez appris et comment le stage vous a aidé -->
+                    <p>
+                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium 
+                        voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati 
+                        cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
+                        id est laborum et dolorum fuga.
+                    </p>
+
+                </section>
+
+                <!-- BARRE LATÉRALE - Informations clés et rapide -->
+                <aside class="sidebar">
+                    <h3>📌 Informations Clés</h3>
+                    <ul>
+                        <li><strong>Entreprise :</strong> [Nom de l'entreprise]</li>
+                        <li><strong>Secteur :</strong> [Secteur d'activité]</li>
+                        <li><strong>Durée :</strong> [Nombre de semaines] semaines</li>
+                        <li><strong>Localisation :</strong> [Ville, Département]</li>
+                        <li><strong>Tuteur :</strong> [Nom du tuteur]</li>
+                        <li><strong>Type de stage :</strong> [Stage immobilisé/alterné]</li>
+                    </ul>
+
+                    <!-- Séparation visuelle -->
+                    <hr style="margin: 25px 0; border: none; border-top: 1px solid var(--couleur-bordure);">
+
+                    <h3>🔑 Mots-clés</h3>
+                    <ul>
+                        <li>Développement web</li>
+                        <li>Gestion de projet</li>
+                        <li>Travail en équipe</li>
+                        <!-- À remplacer : Ajoutez vos propres mots-clés -->
+                    </ul>
+
+                    <!-- Séparation visuelle -->
+                    <hr style="margin: 25px 0; border: none; border-top: 1px solid var(--couleur-bordure);">
+
+                    <!-- Liens vers d'autres pages ou ressources -->
+                    <h3>📚 Ressources</h3>
+                    <ul>
+                        <li><a href="#" style="color: var(--couleur-primaire); text-decoration: none;">Rapport de stage</a></li>
+                        <li><a href="#" style="color: var(--couleur-primaire); text-decoration: none;">Présentation (PDF)</a></li>
+                        <li><a href="#" style="color: var(--couleur-primaire); text-decoration: none;">Code source</a></li>
+                        <!-- À remplir : Ajoutez vos ressources -->
+                    </ul>
+                </aside>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER - Pied de page identique à l'accueil -->
+    <footer class="footer">
+        <p>&copy; 2026 - Mon Portefeuille de Compétences | 
+           <a href="mailto:votremail@example.com">Me contacter</a>
+        </p>
+    </footer>
+</body>
+</html>
