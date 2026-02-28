@@ -5,57 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- À modifier : Remplacez "Premier Stage" par le titre de votre stage -->
     <title>Premier Stage - Mon Portefeuille de Compétences</title>
-    <!-- Lien vers le fichier CSS - Utilisez le même style.css que l'accueil -->
+    <!-- Lien vers le fichier CSS principal -->
     <link rel="stylesheet" href="style.css">
-    <!-- Feuille de style additionnelle pour les pages de détail (optionnel) -->
+    <!-- Feuille de style additionnelle pour les pages de détail -->
     <style>
         /* ============================================================
            STYLES SPÉCIFIQUES AUX PAGES DE STAGE
            
            Ces styles s'ajoutent au style.css principal et personnalisent
-           les pages détaillées de stage.
+           les pages détaillées de stage, compatibles avec la sidebar.
            ============================================================ */
 
         /* Bouton de retour à l'accueil */
         .back-button {
             display: inline-block;
             margin-bottom: 30px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             background-color: var(--couleur-primaire);
             color: white;
             text-decoration: none;
             border-radius: var(--radius);
-            transition: background-color var(--transition);
+            transition: all var(--transition);
+            font-weight: 500;
         }
 
         .back-button:hover {
             background-color: var(--couleur-secondaire);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
         }
 
         /* En-tête de la page de détail */
         .detail-header {
             background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
             color: white;
-            padding: 50px 20px;
-            margin-bottom: 40px;
+            padding: 60px 40px;
+            margin-bottom: 50px;
             border-radius: var(--radius);
             text-align: center;
         }
 
         .detail-header h1 {
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .detail-header .dates {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.15rem;
+            opacity: 0.95;
+            font-weight: 300;
         }
 
         /* Section de contenu avec mise en page en colonnes */
         .detail-content {
             display: grid;
-            grid-template-columns: 2fr 1fr;  /* Colonne principale + colonne latérale */
+            grid-template-columns: 1fr 320px;  /* Colonne principale + barre latérale */
             gap: 40px;
             align-items: start;
         }
@@ -63,49 +68,143 @@
         /* Texte principal du stage */
         .main-text h2 {
             color: var(--couleur-primaire);
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .main-text h2:first-child {
+            margin-top: 0;
         }
 
         .main-text p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             line-height: 1.8;
-            text-align: justify;
+            color: var(--couleur-texte);
+            font-size: 1rem;
         }
 
-        /* Barre latérale avec informations clés */
-        .sidebar {
-            background: var(--couleur-fond);
-            padding: 25px;
+        .main-text ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .main-text li {
+            margin-bottom: 10px;
+            color: var(--couleur-texte);
+        }
+
+        /* Carte de la barre latérale avec informations clés */
+        .info-card {
+            background: white;
+            padding: 30px;
             border-radius: var(--radius);
-            border-left: 4px solid var(--couleur-primaire);
+            border: 1px solid var(--couleur-bordure);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 30px;
         }
 
-        .sidebar h3 {
+        .info-card h3 {
             color: var(--couleur-primaire);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
-        .sidebar ul {
+        .info-card ul {
+            list-style: none;
+            margin-bottom: 0;
+        }
+
+        .info-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--couleur-bordure);
+            font-size: 0.9rem;
+            color: var(--couleur-texte);
+        }
+
+        .info-card li:last-child {
+            border-bottom: none;
+        }
+
+        .info-card strong {
+            color: var(--couleur-primaire);
+            font-weight: 600;
+        }
+
+        /* Séparation entre sections de la carte */
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-section:not(:last-child) {
+            padding-bottom: 25px;
+            border-bottom: 2px solid var(--couleur-bordure);
+        }
+
+        /* Mots-clés en petits blocs */
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .keyword-tag {
+            background-color: var(--couleur-fond);
+            color: var(--couleur-primaire);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--couleur-primaire);
+            transition: all var(--transition);
+        }
+
+        .keyword-tag:hover {
+            background-color: var(--couleur-primaire);
+            color: white;
+        }
+
+        /* Ressources - Liste de liens */
+        .resources-list {
             list-style: none;
         }
 
-        .sidebar li {
-            padding: 8px 0;
+        .resources-list li {
+            padding: 10px 0;
             border-bottom: 1px solid var(--couleur-bordure);
         }
 
-        .sidebar li:last-child {
+        .resources-list li:last-child {
             border-bottom: none;
+        }
+
+        .resources-list a {
+            color: var(--couleur-primaire);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color var(--transition);
+        }
+
+        .resources-list a:hover {
+            color: var(--couleur-accent);
+            text-decoration: underline;
         }
 
         /* Galerie d'images ou captures d'écran */
         .gallery {
             margin: 40px 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
         }
 
         .gallery-item {
@@ -113,53 +212,168 @@
             padding: 20px;
             border-radius: var(--radius);
             text-align: center;
-            border: 2px dashed var(--couleur-bordure);
+            border: 1px solid var(--couleur-bordure);
+            transition: all var(--transition);
+        }
+
+        .gallery-item:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
         }
 
         .gallery-item img {
             max-width: 100%;
             height: auto;
             border-radius: var(--radius);
+            margin-bottom: 12px;
         }
 
         .gallery-item p {
-            margin-top: 10px;
             font-size: 0.9rem;
-            color: #6b7280;
+            color: var(--couleur-texte-clair);
+            font-weight: 500;
         }
 
-        /* Responsive pour mobile */
-        @media (max-width: 768px) {
+        /* Footer ajusté pour la nouvelle structure */
+        .stage-footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 2px solid var(--couleur-bordure);
+            text-align: center;
+            color: var(--couleur-texte-clair);
+            font-size: 0.9rem;
+        }
+
+        .stage-footer a {
+            color: var(--couleur-primaire);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .stage-footer a:hover {
+            color: var(--couleur-accent);
+        }
+
+        /* Responsive pour tablette et mobile */
+        @media (max-width: 1024px) {
             .detail-content {
-                grid-template-columns: 1fr;  /* Une colonne sur mobile */
+                grid-template-columns: 1fr;
+            }
+
+            .info-card {
+                position: static;
+                margin-bottom: 50px;
+            }
+
+            .detail-header {
+                padding: 50px 30px;
+            }
+
+            .detail-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .detail-header {
+                padding: 40px 20px;
+                margin-bottom: 30px;
             }
 
             .detail-header h1 {
                 font-size: 1.8rem;
             }
+
+            .main-text h2 {
+                font-size: 1.35rem;
+                margin-top: 30px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 15px;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .detail-header {
+                padding: 30px 15px;
+            }
+
+            .detail-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .main-text h2 {
+                font-size: 1.2rem;
+                margin-top: 25px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .info-card {
+                padding: 20px;
+            }
+
+            .keywords {
+                gap: 8px;
+            }
+
+            .keyword-tag {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- LIEN DE RETOUR - Permet de revenir à l'accueil -->
-    <div class="container margin-top">
-        <!-- À modifier : Vérifiez que le lien vers index.html est correct -->
-        <a href="index.html" class="back-button">← Retour à l'accueil</a>
-    </div>
+    <!-- SIDEBAR - Réutilisée depuis l'accueil (voir style.css) -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="sidebar-name">Pierrick</h1>
+            <p class="sidebar-title">BTS SIO - 2ème année</p>
+        </div>
 
-    <!-- EN-TÊTE DE DETAIL - Titre et dates du stage -->
-    <header class="detail-header">
-        <div class="container">
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li><a href="index.html#accueil" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#stages" class="nav-link">Mes Stages</a></li>
+                <li><a href="index.html#projets" class="nav-link">Projets</a></li>
+                <li><a href="index.html#veille" class="nav-link">Veille</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p><strong>Email :</strong></p>
+            <p><a href="mailto:votremail@example.com">votremail@example.com</a></p>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT - Zone scrollable à droite -->
+    <main class="main-content">
+        <!-- Bouton retour en haut -->
+        <div style="padding: 50px 40px 20px 40px;">
+            <a href="index.html" class="back-button">← Retour à l'accueil</a>
+        </div>
+
+        <!-- EN-TÊTE DE DETAIL - Titre et dates du stage -->
+        <header class="detail-header">
             <!-- À modifier : Remplacez par le nom de votre entreprise/organisation -->
             <h1>Premier Stage</h1>
             <!-- À modifier : Remplacez les dates par les vôtres (format : du DD/MM/AAAA au DD/MM/AAAA) -->
             <p class="dates">Du [Date de début] au [Date de fin]</p>
-        </div>
-    </header>
+        </header>
 
-    <!-- CONTENU PRINCIPAL -->
-    <main class="main-content">
-        <div class="container">
+        <!-- CONTENU PRINCIPAL avec sidebar -->
+        <div style="padding: 0 40px 60px 40px;">
             <div class="detail-content">
 
                 <!-- COLONNE PRINCIPALE - Texte détaillé du stage -->
@@ -183,10 +397,10 @@
                         culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                     <!-- Vous pouvez ajouter une liste à puces si nécessaire -->
-                    <ul style="margin: 15px 0 15px 30px;">
-                        <li>Mission 1 : Description courte</li>
-                        <li>Mission 2 : Description courte</li>
-                        <li>Mission 3 : Description courte</li>
+                    <ul>
+                        <li>Mission 1 : Description courte de votre première mission</li>
+                        <li>Mission 2 : Description courte de votre deuxième mission</li>
+                        <li>Mission 3 : Description courte de votre troisième mission</li>
                     </ul>
 
                     <!-- SECTION 3 : COMPÉTENCES ACQUISES -->
@@ -204,11 +418,11 @@
                     <p>
                         Pendant ce stage, j'ai utilisé les technologies suivantes :
                     </p>
-                    <ul style="margin: 15px 0 15px 30px;">
-                        <li>Langage de programmation : [À remplir]</li>
-                        <li>Framework/Librairie : [À remplir]</li>
-                        <li>Outils : [À remplir]</li>
-                        <li>Base de données : [À remplir]</li>
+                    <ul>
+                        <li><strong>Langage de programmation :</strong> [À remplir]</li>
+                        <li><strong>Framework/Librairie :</strong> [À remplir]</li>
+                        <li><strong>Outils :</strong> [À remplir]</li>
+                        <li><strong>Base de données :</strong> [À remplir]</li>
                     </ul>
 
                     <!-- SECTION 5 : RÉALISATIONS ET PROJETS SPÉCIFIQUES -->
@@ -219,20 +433,20 @@
                         consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
                     </p>
 
-                    <!-- GALERIE (Optionnel) - Zone pour ajouter des images, captures d'écran, etc. -->
+                    <!-- GALERIE - Zone pour ajouter des images, captures d'écran, etc. -->
                     <h2>📸 Galerie</h2>
                     <div class="gallery">
                         <!-- À ajouter : Remplacez par vos images réelles -->
                         <div class="gallery-item">
-                            <img src="https://via.placeholder.com/200" alt="Capture d'écran 1">
+                            <img src="https://via.placeholder.com/220x150" alt="Capture d'écran 1">
                             <p>Description de l'image 1</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://via.placeholder.com/200" alt="Capture d'écran 2">
+                            <img src="https://via.placeholder.com/220x150" alt="Capture d'écran 2">
                             <p>Description de l'image 2</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://via.placeholder.com/200" alt="Capture d'écran 3">
+                            <img src="https://via.placeholder.com/220x150" alt="Capture d'écran 3">
                             <p>Description de l'image 3</p>
                         </div>
                     </div>
@@ -247,53 +461,57 @@
                         id est laborum et dolorum fuga.
                     </p>
 
+                    <!-- Footer de la page stage -->
+                    <div class="stage-footer">
+                        <p>&copy; 2026 - Mon Portefeuille de Compétences | 
+                           <a href="mailto:votremail@example.com">Me contacter</a>
+                        </p>
+                    </div>
+
                 </section>
 
-                <!-- BARRE LATÉRALE - Informations clés et rapide -->
-                <aside class="sidebar">
-                    <h3>📌 Informations Clés</h3>
-                    <ul>
-                        <li><strong>Entreprise :</strong> [Nom de l'entreprise]</li>
-                        <li><strong>Secteur :</strong> [Secteur d'activité]</li>
-                        <li><strong>Durée :</strong> [Nombre de semaines] semaines</li>
-                        <li><strong>Localisation :</strong> [Ville, Département]</li>
-                        <li><strong>Tuteur :</strong> [Nom du tuteur]</li>
-                        <li><strong>Type de stage :</strong> [Stage immobilisé/alterné]</li>
-                    </ul>
+                <!-- BARRE LATÉRALE - Informations clés en carte propre -->
+                <aside class="info-card">
+                    <!-- SECTION 1 : INFORMATIONS CLÉS -->
+                    <div class="info-section">
+                        <h3>📌 Informations Clés</h3>
+                        <ul>
+                            <li><strong>Entreprise :</strong> [Nom de l'entreprise]</li>
+                            <li><strong>Secteur :</strong> [Secteur d'activité]</li>
+                            <li><strong>Durée :</strong> [Nombre] semaines</li>
+                            <li><strong>Localisation :</strong> [Ville]</li>
+                            <li><strong>Tuteur :</strong> [Nom du tuteur]</li>
+                            <li><strong>Type :</strong> [Immobilisé/Alterné]</li>
+                        </ul>
+                    </div>
 
-                    <!-- Séparation visuelle -->
-                    <hr style="margin: 25px 0; border: none; border-top: 1px solid var(--couleur-bordure);">
+                    <!-- SECTION 2 : MOTS-CLÉS EN PETITS BLOCS -->
+                    <div class="info-section">
+                        <h3>🔑 Mots-clés</h3>
+                        <div class="keywords">
+                            <!-- À remplacer : Ajoutez vos propres mots-clés -->
+                            <span class="keyword-tag">Développement</span>
+                            <span class="keyword-tag">Projet</span>
+                            <span class="keyword-tag">Apprentissage</span>
+                            <span class="keyword-tag">Web</span>
+                        </div>
+                    </div>
 
-                    <h3>🔑 Mots-clés</h3>
-                    <ul>
-                        <li>Développement web</li>
-                        <li>Gestion de projet</li>
-                        <li>Travail en équipe</li>
-                        <!-- À remplacer : Ajoutez vos propres mots-clés -->
-                    </ul>
-
-                    <!-- Séparation visuelle -->
-                    <hr style="margin: 25px 0; border: none; border-top: 1px solid var(--couleur-bordure);">
-
-                    <!-- Liens vers d'autres pages ou ressources -->
-                    <h3>📚 Ressources</h3>
-                    <ul>
-                        <li><a href="#" style="color: var(--couleur-primaire); text-decoration: none;">Rapport de stage</a></li>
-                        <li><a href="#" style="color: var(--couleur-primaire); text-decoration: none;">Présentation (PDF)</a></li>
-                        <li><a href="#" style="color: var(--couleur-primaire); text-decoration: none;">Code source</a></li>
-                        <!-- À remplir : Ajoutez vos ressources -->
-                    </ul>
+                    <!-- SECTION 3 : RESSOURCES ET LIENS -->
+                    <div class="info-section">
+                        <h3>📚 Ressources</h3>
+                        <ul class="resources-list">
+                            <!-- À remplir : Ajoutez vos ressources et mettez à jour les liens -->
+                            <li><a href="#">Rapport de stage</a></li>
+                            <li><a href="#">Présentation (PDF)</a></li>
+                            <li><a href="#">Code source</a></li>
+                            <li><a href="#">Documentations</a></li>
+                        </ul>
+                    </div>
                 </aside>
 
             </div>
         </div>
     </main>
-
-    <!-- FOOTER - Pied de page identique à l'accueil -->
-    <footer class="footer">
-        <p>&copy; 2026 - Mon Portefeuille de Compétences | 
-           <a href="mailto:votremail@example.com">Me contacter</a>
-        </p>
-    </footer>
 </body>
 </html>
