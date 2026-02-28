@@ -4,87 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portefeuille de Compétences - BTS SIO</title>
-    <!-- Lien vers le fichier CSS principal -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- HEADER : En-tête du site avec titre et sous-titre -->
-    <header class="header">
-        <div class="header-content">
-            <!-- Remplacez "Nom Prénom" par votre nom -->
-            <h1>Mon Portefeuille de Compétences</h1>
-            <!-- Remplacez le texte ci-dessous par votre présentation personnelle -->
-            <p class="subtitle">Étudiant en BTS SIO - Parcours : [À remplir]</p>
+    <!-- SIDEBAR - Menu de navigation fixe à gauche -->
+    <aside class="sidebar">
+        <!-- Logo/Nom personnel -->
+        <div class="sidebar-header">
+            <!-- À remplir : Remplacez par votre prénom et nom -->
+            <h1 class="sidebar-name">Pierrick</h1>
+            <p class="sidebar-title">BTS SIO - 2ème année</p>
         </div>
-    </header>
 
-    <!-- MAIN : Contenu principal avec la grille de cartes -->
+        <!-- Navigation avec ancres vers les sections -->
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <!-- Lien vers la section Hero -->
+                <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                <!-- Lien vers la section Stages -->
+                <li><a href="#stages" class="nav-link">Mes Stages</a></li>
+                <!-- Lien vers la section Projets -->
+                <li><a href="#projets" class="nav-link">Projets</a></li>
+                <!-- Lien vers la section Veille -->
+                <li><a href="#veille" class="nav-link">Veille</a></li>
+                <!-- Lien vers la section Contact -->
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Informations de contact en bas du sidebar -->
+        <div class="sidebar-footer">
+            <!-- À remplir : Remplacez par votre email -->
+            <p><strong>Email :</strong></p>
+            <p><a href="mailto:votremail@example.com">votremail@example.com</a></p>
+            <!-- Vous pouvez ajouter des liens vers vos réseaux sociaux ici -->
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT - Zone scrollable avec le contenu principal -->
     <main class="main-content">
-        <div class="container">
-            <!-- Titre de la section -->
-            <h2 class="section-title">Mes Projets et Expériences</h2>
 
-            <!-- GRILLE DE CARTES : 4 cartes cliquables correspondant aux 4 sections principales -->
-            <div class="cards-grid">
-
-                <!-- CARTE 1 : Premier Stage -->
-                <!-- À modifier : Cliquez sur la carte pour aller sur stage1.html -->
-                <a href="stage1.html" class="card-link">
-                    <div class="card">
-                        <!-- Icône ou image de la carte (optionnel) -->
-                        <div class="card-icon">📚</div>
-                        <!-- Titre de la carte -->
-                        <h3>Premier Stage</h3>
-                        <!-- Description courte - À remplacer par votre résumé -->
-                        <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <!-- Indication interactive -->
-                        <div class="card-footer">En savoir plus →</div>
-                    </div>
-                </a>
-
-                <!-- CARTE 2 : Deuxième Stage -->
-                <!-- À modifier : Créez stage2.html en copiant stage1.html et adaptez le contenu -->
-                <a href="stage2.html" class="card-link">
-                    <div class="card">
-                        <div class="card-icon">🎯</div>
-                        <h3>Deuxième Stage</h3>
-                        <p class="card-description">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <div class="card-footer">En savoir plus →</div>
-                    </div>
-                </a>
-
-                <!-- CARTE 3 : Réalisations -->
-                <!-- À modifier : Créez realizations.html ou realisations.html -->
-                <a href="realizations.html" class="card-link">
-                    <div class="card">
-                        <div class="card-icon">🏆</div>
-                        <h3>Réalisations</h3>
-                        <p class="card-description">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                        <div class="card-footer">En savoir plus →</div>
-                    </div>
-                </a>
-
-                <!-- CARTE 4 : Veille -->
-                <!-- À modifier : Créez veille.html pour votre veille technologique -->
-                <a href="veille.html" class="card-link">
-                    <div class="card">
-                        <div class="card-icon">🔍</div>
-                        <h3>Veille</h3>
-                        <p class="card-description">Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-                        <div class="card-footer">En savoir plus →</div>
-                    </div>
-                </a>
-
+        <!-- SECTION 1 : HERO / ACCUEIL -->
+        <section id="accueil" class="section hero-section">
+            <div class="section-container">
+                <!-- À modifier : Changez le message de bienvenue -->
+                <h1 class="hero-title">Bienvenue sur mon Portefeuille</h1>
+                <!-- À modifier : Écrivez votre présentation personnelle -->
+                <p class="hero-subtitle">Je suis un étudiant en BTS Services Informatiques aux Organisations passionné par le développement web et les technologies modernes.</p>
+                <!-- À modifier : Personnalisez votre présentation -->
+                <p class="hero-text">
+                    Ce portfolio présente mes expériences de stage, mes projets académiques et ma veille technologique. 
+                    Explorez les différentes sections pour découvrir mon parcours et mes compétences.
+                </p>
+                <!-- Bouton de défilement vers la section stages -->
+                <a href="#stages" class="hero-cta">Découvrir mes expériences</a>
             </div>
-        </div>
-    </main>
+        </section>
 
-    <!-- FOOTER : Pied de page -->
-    <footer class="footer">
-        <!-- À remplacer avec vos informations de contact -->
-        <p>&copy; 2026 - Mon Portefeuille de Compétences | 
-           <a href="mailto:votremail@example.com">Me contacter</a>
-        </p>
-    </footer>
+        <!-- SECTION 2 : MES STAGES -->
+        <section id="stages" class="section stages-section">
+            <div class="section-container">
+                <!-- Titre de la section -->
+                <h2 class="section-title">Mes Stages</h2>
+                <!-- Sous-titre optionnel pour contextualiser -->
+                <p class="section-subtitle">Deux périodes enrichissantes où j'ai pu développer mes compétences et découvrir l'environnement professionnel.</p>
+
+                <!-- GRILLE DE CARTES - 4 stages/projets principaux -->
+                <div class="cards-grid">
+
+                    <!-- CARTE 1 : Premier Stage -->
+                    <a href="stage1.html" class="card-link">
+                        <div class="card">
+                            <div class="card-icon">📚</div>
+                            <h3>Premier Stage</h3>
+                            <!-- À modifier : Remplacez par une description courte de votre 1er stage -->
+                            <p class="card-description">Découvrez mon premier stage et les compétences acquises dans un environnement professionnel.</p>
+                            <div class="card-footer">En savoir plus →</div>
+                        </div>
+                    </a>
+
+                    <!-- CARTE 2 : Deuxième Stage -->
+                    <a href="stage2.html" class="card-link">
+                        <div class="card">
+                            <div class="card-icon">🎯</div>
+                            <h3>Deuxième Stage</h3>
+                            <!-- À modifier : Remplacez par une description courte de votre 2e stage -->
+                            <p class="card-description">Mon deuxième stage m'a permis d'approfondir mes connaissances et de travailler sur des projets concrets.</p>
+                            <div class="card-footer">En savoir plus →</div>
+                        </div>
+                    </a>
+
+                    <!-- CARTE 3 : Réalisations -->
+                    <a href="realizations.html" class="card-link">
+                        <div class="card">
+                            <div class="card-icon">🏆</div>
+                            <h3>Réalisations</h3>
+                            <!-- À modifier : Remplacez par une description de vos réalisations principales -->
+                            <p class="card-description">Consultez les projets et réalisations significatives que j'ai développés durant ma formation.</p>
+                            <div class="card-footer">En savoir plus →</div>
+                        </div>
+                    </a>
+
+                    <!-- CARTE 4 : Veille Technologique -->
+                    <a href="veille.html" class="card-link">
+                        <div class="card">
+                            <div class="card-icon">🔍</div>
+                            <h3>Veille Technologique</h3>
+                            <!-- À modifier : Remplacez par une description de votre veille -->
+                            <p class="card-description">Restez informé de ma veille technologique et des tendances qui m'intéressent dans l'informatique.</p>
+                            <div class="card-footer">En savoir plus →</div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 : PROJETS -->
+        <section id="projets" class="section projects-section">
+            <div class="section-container">
+                <!-- Titre de la section -->
+                <h2 class="section-title">Projets</h2>
+                <!-- Sous-titre optionnel -->
+                <p class="section-subtitle">Mes projets personnels et académiques montrent ma capacité à concevoir et développer des solutions informatiques.</p>
+
+                <!-- À remplir : Ajoutez vos projets ici -->
+                <div class="projects-placeholder">
+                    <p>Cette section est en cours de développement. Vous pouvez ajouter vos projets ici.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4 : VEILLE TECHNOLOGIQUE -->
+        <section id="veille" class="section veille-section">
+            <div class="section-container">
+                <!-- Titre de la section -->
+                <h2 class="section-title">Veille Technologique</h2>
+                <!-- Sous-titre optionnel -->
+                <p class="section-subtitle">Mes articles, ressources et réflexions sur les tendances technologiques actuelles.</p>
+
+                <!-- À remplir : Ajoutez vos articles de veille ici -->
+                <div class="veille-placeholder">
+                    <p>Cette section est en cours de développement. Vous pouvez ajouter vos articles de veille ici.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5 : CONTACT -->
+        <section id="contact" class="section contact-section">
+            <div class="section-container">
+                <!-- Titre de la section -->
+                <h2 class="section-title">Me Contacter</h2>
+                <!-- Sous-titre optionnel -->
+                <p class="section-subtitle">N'hésitez pas à me contacter pour discuter de mes projets ou pour des opportunités professionnelles.</p>
+
+                <!-- Formulaire ou informations de contact -->
+                <!-- À remplir : Remplacez par vos informations de contact -->
+                <div class="contact-info">
+                    <p><strong>Email :</strong> <a href="mailto:votremail@example.com">votremail@example.com</a></p>
+                    <p><strong>Téléphone :</strong> [À ajouter]</p>
+                    <p><strong>LinkedIn :</strong> <a href="https://linkedin.com" target="_blank">[Votre profil]</a></p>
+                    <p><strong>GitHub :</strong> <a href="https://github.com/P-err-ck9" target="_blank">P-err-ck9</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>&copy; 2026 - Mon Portefeuille de Compétences | Développé avec passion</p>
+        </footer>
+
+    </main>
 </body>
 </html>
