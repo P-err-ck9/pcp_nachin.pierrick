@@ -1,175 +1,470 @@
 /* ============================================================
    STYLE.CSS - PORTEFEUILLE DE COMPÉTENCES BTS SIO
-   
-   Ce fichier contient tous les styles (CSS) de votre PCP.
-   Les commentaires vous expliquent chaque section pour que
-   vous puissiez personnaliser les couleurs, polices, espaces, etc.
+   DESIGN MODERNE 2026 - ARCHITECTURE ONE-PAGE AVEC SIDEBAR
    ============================================================ */
 
-/* VARIABLES CSS - Les couleurs et dimensions principales */
+/* VARIABLES CSS - Couleurs et dimensions */
 :root {
-    /* Couleurs principales - À adapter à votre préférence */
-    --couleur-primaire: #2563eb;      /* Bleu principal */
-    --couleur-secondaire: #1e40af;    /* Bleu foncé pour survolage */
-    --couleur-accent: #f59e0b;        /* Orange/Accent */
-    --couleur-fond: #f8fafc;          /* Fond très clair */
-    --couleur-texte: #1f2937;         /* Texte foncé */
-    --couleur-bordure: #e5e7eb;       /* Bordures grises */
+    /* Couleurs principales */
+    --couleur-primaire: #2563eb;          /* Bleu principal */
+    --couleur-secondaire: #1e40af;        /* Bleu foncé */
+    --couleur-accent: #f59e0b;            /* Orange */
+    --couleur-fond: #f8fafc;              /* Fond très clair */
+    --couleur-texte: #1f2937;             /* Texte foncé */
+    --couleur-texte-clair: #6b7280;       /* Texte gris */
+    --couleur-bordure: #e5e7eb;           /* Bordures */
+    --couleur-sidebar: #1a1c1e;           /* Sidebar sombre */
+    --couleur-sidebar-texte: #e5e7eb;     /* Texte sidebar */
     
-    /* Dimensions et espacements */
+    /* Dimensions */
+    --sidebar-width: 280px;               /* Largeur du sidebar */
+    --radius: 12px;                       /* Arrondi des coins */
+    --transition: 0.3s ease-in-out;       /* Durée des animations */
     --padding-standard: 20px;
-    --radius: 12px;                   /* Arrondi des coins */
-    --transition: 0.3s ease-in-out;   /* Durée des animations */
 }
 
 /* ============================================================
-   STYLES GLOBAUX - S'appliquent à toute la page
+   STYLES GLOBAUX
    ============================================================ */
 
-/* Réinitialisation et styles de base */
 * {
-    margin: 0;                    /* Supprime les marges par défaut */
-    padding: 0;                   /* Supprime les espaces internes par défaut */
-    box-sizing: border-box;       /* Inclut padding et border dans la largeur */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;              /* Défilement fluide entre les ancres */
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Police moderne */
-    font-size: 16px;              /* Taille de base du texte */
-    color: var(--couleur-texte);  /* Couleur du texte */
-    background-color: var(--couleur-fond);  /* Couleur de fond */
-    line-height: 1.6;             /* Espacement entre les lignes */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: var(--couleur-texte);
+    background-color: var(--couleur-fond);
+    line-height: 1.6;
+    display: flex;                        /* Flex pour layout sidebar + content */
 }
 
 /* ============================================================
-   HEADER - En-tête avec titre principal
+   SIDEBAR - Navigation fixe à gauche
    ============================================================ */
 
-.header {
-    background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+.sidebar {
+    position: fixed;                      /* Reste visible lors du défilement */
+    left: 0;
+    top: 0;
+    width: var(--sidebar-width);
+    height: 100vh;                        /* Hauteur pleine page */
+    background-color: var(--couleur-sidebar);
+    color: var(--couleur-sidebar-texte);
+    padding: 40px 25px;
+    display: flex;                        /* Organisation verticale */
+    flex-direction: column;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);  /* Ombre à droite */
+    z-index: 100;                         /* Au-dessus du contenu */
+}
+
+/* En-tête du sidebar avec nom et titre */
+.sidebar-header {
+    margin-bottom: 50px;
+    border-bottom: 2px solid rgba(229, 231, 235, 0.2);
+    padding-bottom: 25px;
+}
+
+.sidebar-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
     color: white;
-    padding: 60px 20px;           /* Espacement vertical et horizontal */
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Ombre légère */
 }
 
-.header-content h1 {
-    font-size: 2.5rem;            /* Titre très grand */
-    margin-bottom: 10px;
-    font-weight: 700;             /* Texte gras */
+.sidebar-title {
+    font-size: 0.9rem;
+    color: var(--couleur-texte-clair);
+    font-weight: 300;
 }
 
-.header .subtitle {
-    font-size: 1.1rem;
-    opacity: 0.95;                /* Légèrement transparent */
-    font-weight: 300;             /* Texte léger */
+/* Navigation du sidebar */
+.sidebar-nav {
+    flex: 1;                              /* Occupe l'espace disponible */
+}
+
+.nav-list {
+    list-style: none;
+}
+
+.nav-link {
+    display: block;
+    padding: 12px 16px;
+    color: var(--couleur-sidebar-texte);
+    text-decoration: none;
+    margin-bottom: 8px;
+    border-radius: var(--radius);
+    transition: all var(--transition);
+    font-weight: 500;
+}
+
+/* Survol d'un lien de navigation */
+.nav-link:hover {
+    background-color: rgba(37, 99, 235, 0.15);  /* Bleu léger */
+    color: var(--couleur-primaire);
+    transform: translateX(8px);           /* Décalage à droite */
+}
+
+/* Lien actif de la navigation */
+.nav-link.active {
+    background-color: var(--couleur-primaire);
+    color: white;
+}
+
+/* Pied du sidebar avec infos de contact */
+.sidebar-footer {
+    border-top: 2px solid rgba(229, 231, 235, 0.2);
+    padding-top: 25px;
+    font-size: 0.85rem;
+}
+
+.sidebar-footer p {
+    margin-bottom: 8px;
+}
+
+.sidebar-footer a {
+    color: var(--couleur-primaire);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.sidebar-footer a:hover {
+    color: var(--couleur-accent);
 }
 
 /* ============================================================
-   MAIN CONTENT - Contenu principal
+   MAIN CONTENT - Zone scrollable à droite
    ============================================================ */
 
 .main-content {
-    padding: 60px 20px;           /* Espacement haut/bas */
+    margin-left: var(--sidebar-width);    /* Décalage pour sidebar */
+    width: calc(100% - var(--sidebar-width));  /* Largeur restante */
+    min-height: 100vh;
+    overflow-y: auto;                     /* Scroll vertical */
 }
 
-.container {
-    max-width: 1200px;            /* Largeur maximale du contenu */
-    margin: 0 auto;               /* Centrage horizontal */
+/* ============================================================
+   SECTIONS - Organisation du contenu
+   ============================================================ */
+
+.section {
+    min-height: 100vh;                    /* Au minimum une hauteur viewport */
+    padding: 80px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.section-container {
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* Titre des sections */
 .section-title {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
     color: var(--couleur-primaire);
 }
 
-/* ============================================================
-   GRILLE DE CARTES - Disposition responsive 4 colonnes → 1
-   ============================================================ */
-
-.cards-grid {
-    display: grid;                /* Utilise CSS Grid pour la mise en page */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  /* 4 colonnes qui s'adaptent */
-    gap: 30px;                    /* Espace entre les cartes */
+/* Sous-titre optionnel des sections */
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--couleur-texte-clair);
     margin-bottom: 40px;
+    font-weight: 300;
 }
 
 /* ============================================================
-   CARTES - Éléments cliquables avec effet de survol
+   SECTION HERO - Accueil
    ============================================================ */
 
-/* Lien de la carte (supprime le style par défaut des liens) */
+.hero-section {
+    background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+    color: white;
+    padding: 100px 40px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+.hero-text {
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    line-height: 1.8;
+}
+
+/* Bouton CTA du hero */
+.hero-cta {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--couleur-accent);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: all var(--transition);
+    cursor: pointer;
+}
+
+.hero-cta:hover {
+    background-color: #f59e0b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+}
+
+/* ============================================================
+   SECTION STAGES - Mes Stages
+   ============================================================ */
+
+.stages-section {
+    background-color: var(--couleur-fond);
+    padding-bottom: 100px;
+}
+
+/* Grille de cartes responsive */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Lien de la carte (pas de style spécial) */
 .card-link {
-    text-decoration: none;        /* Pas de soulignement */
-    color: inherit;               /* Hérite de la couleur du texte */
-    cursor: pointer;              /* Montre que c'est cliquable */
-    transition: transform var(--transition);  /* Animation au survol */
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 /* Boîte de la carte */
 .card {
-    background: white;            /* Fond blanc */
-    border-radius: var(--radius); /* Coins arrondis */
-    padding: var(--padding-standard);  /* Espacement interne */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Ombre légère */
-    border: 1px solid var(--couleur-bordure);  /* Bordure grise */
-    transition: all var(--transition);  /* Transition fluide pour tous les changements */
-    display: flex;                /* Flexbox pour organiser le contenu */
-    flex-direction: column;       /* En colonne (haut vers bas) */
-    height: 100%;                 /* Remplit la hauteur disponible */
+    background: white;
+    border-radius: var(--radius);
+    padding: 30px 25px;
+    border: 1px solid var(--couleur-bordure);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 /* Effet de survol sur la carte */
 .card-link:hover .card {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);  /* Ombre plus grande */
-    border-color: var(--couleur-primaire);  /* Bordure bleue */
-    transform: translateY(-8px);  /* Soulève la carte */
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    border-color: var(--couleur-primaire);
 }
 
-/* Icône de la carte (emoji ou image) */
+/* Icône de la carte */
 .card-icon {
-    font-size: 3rem;              /* Très grande taille d'emoji */
-    margin-bottom: 15px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
     text-align: center;
+    display: block;
 }
 
 /* Titre de la carte */
 .card h3 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
+    font-weight: 600;
     margin-bottom: 15px;
     color: var(--couleur-primaire);
 }
 
-/* Description courte de la carte */
+/* Description de la carte */
 .card-description {
-    color: #6b7280;               /* Texte gris */
+    color: var(--couleur-texte-clair);
     margin-bottom: 20px;
-    flex-grow: 1;                 /* Occupe l'espace disponible */
+    flex-grow: 1;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Pied de carte */
+.card-footer {
+    color: var(--couleur-primaire);
+    font-weight: 600;
+    transition: color var(--transition);
     font-size: 0.95rem;
 }
 
-/* Pied de carte avec indication "En savoir plus" */
-.card-footer {
-    color: var(--couleur-primaire);
-    font-weight: 600;             /* Texte semi-gras */
-    transition: color var(--transition);
-}
-
-/* Changement de couleur au survol */
 .card-link:hover .card-footer {
-    color: var(--couleur-accent);  /* Orange */
+    color: var(--couleur-accent);
 }
 
 /* ============================================================
-   RESPONSIVE - Adaptation pour les petits écrans
+   SECTION PROJETS
    ============================================================ */
 
-/* Tablettes (écrans de moins de 768px) */
+.projects-section {
+    background-color: white;
+}
+
+.projects-placeholder {
+    background-color: var(--couleur-fond);
+    padding: 60px 40px;
+    border-radius: var(--radius);
+    text-align: center;
+    color: var(--couleur-texte-clair);
+}
+
+/* ============================================================
+   SECTION VEILLE
+   ============================================================ */
+
+.veille-section {
+    background-color: var(--couleur-fond);
+}
+
+.veille-placeholder {
+    background-color: white;
+    padding: 60px 40px;
+    border-radius: var(--radius);
+    text-align: center;
+    color: var(--couleur-texte-clair);
+}
+
+/* ============================================================
+   SECTION CONTACT
+   ============================================================ */
+
+.contact-section {
+    background-color: white;
+}
+
+.contact-info {
+    background-color: var(--couleur-fond);
+    padding: 40px;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--couleur-primaire);
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.contact-info a {
+    color: var(--couleur-primaire);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.contact-info a:hover {
+    color: var(--couleur-accent);
+    text-decoration: underline;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+    background-color: var(--couleur-sidebar);
+    color: var(--couleur-sidebar-texte);
+    text-align: center;
+    padding: 40px;
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   RESPONSIVE - Adaptation mobile et tablette
+   ============================================================ */
+
+/* Tablettes (768px et moins) */
 @media (max-width: 768px) {
-    .header-content h1 {
-        font-size: 2rem;          /* Titre plus petit */
+    :root {
+        --sidebar-width: 70px;            /* Sidebar réduite */
+    }
+
+    .sidebar {
+        padding: 20px 10px;
+    }
+
+    .sidebar-header {
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+    }
+
+    .sidebar-name {
+        font-size: 1.2rem;
+    }
+
+    .sidebar-title {
+        display: none;                     /* Masquer sur petits écrans */
+    }
+
+    .nav-link {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .sidebar-footer {
+        display: none;                     /* Masquer sur petits écrans */
+    }
+
+    .main-content {
+        margin-left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));
+    }
+
+    .section {
+        padding: 60px 25px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Téléphones (480px et moins) */
+@media (max-width: 480px) {
+    :root {
+        --sidebar-width: 70px;
+    }
+
+    .section {
+        padding: 50px 15px;
+        min-height: auto;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
     }
 
     .section-title {
@@ -177,78 +472,33 @@ body {
     }
 
     .cards-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Adaptation pour tablette */
-        gap: 20px;                /* Moins d'espace */
-    }
-}
-
-/* Téléphones (écrans de moins de 480px) */
-@media (max-width: 480px) {
-    .header {
-        padding: 40px 15px;       /* Moins de padding */
-    }
-
-    .header-content h1 {
-        font-size: 1.5rem;
-    }
-
-    .main-content {
-        padding: 40px 15px;
-    }
-
-    .cards-grid {
-        grid-template-columns: 1fr;  /* Une seule colonne sur mobile */
-        gap: 15px;
+        grid-template-columns: 1fr;       /* Une colonne */
     }
 
     .card {
-        padding: 15px;
+        padding: 20px;
+    }
+
+    .card h3 {
+        font-size: 1.1rem;
+    }
+
+    .contact-info {
+        padding: 25px;
+    }
+
+    .contact-info p {
+        font-size: 0.95rem;
     }
 }
 
-/* ============================================================
-   FOOTER - Pied de page
-   ============================================================ */
+/* Très petits écrans (moins de 360px) */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
 
-.footer {
-    background: var(--couleur-primaire);
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 60px;
-    font-size: 0.95rem;
-}
-
-.footer a {
-    color: var(--couleur-accent);  /* Lien en orange */
-    text-decoration: none;
-}
-
-.footer a:hover {
-    text-decoration: underline;
-}
-
-/* ============================================================
-   UTILITAIRES - Classes réutilisables
-   ============================================================ */
-
-/* Conteneur avec largeur max et centré */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Texte centré */
-.text-center {
-    text-align: center;
-}
-
-/* Espacement vertical */
-.margin-top {
-    margin-top: 30px;
-}
-
-.margin-bottom {
-    margin-bottom: 30px;
+    .nav-link {
+        padding: 8px;
+    }
 }
