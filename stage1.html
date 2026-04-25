@@ -35,6 +35,28 @@
             box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
         }
 
+        /* Bouton d'accès à la documentation technique */
+        .mission-doc-button {
+            display: inline-block;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            padding: 14px 28px;
+            background-color: var(--couleur-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            font-weight: 600;
+            border: 2px solid var(--couleur-accent);
+        }
+
+        .mission-doc-button:hover {
+            background-color: transparent;
+            color: var(--couleur-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(245, 158, 11, 0.3);
+        }
+
         /* En-tête de la page de détail */
         .detail-header {
             background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
@@ -199,41 +221,6 @@
             text-decoration: underline;
         }
 
-        /* Galerie d'images ou captures d'écran */
-        .gallery {
-            margin: 40px 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-
-        .gallery-item {
-            background: var(--couleur-fond);
-            padding: 20px;
-            border-radius: var(--radius);
-            text-align: center;
-            border: 1px solid var(--couleur-bordure);
-            transition: all var(--transition);
-        }
-
-        .gallery-item:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-            transform: translateY(-4px);
-        }
-
-        .gallery-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: var(--radius);
-            margin-bottom: 12px;
-        }
-
-        .gallery-item p {
-            font-size: 0.9rem;
-            color: var(--couleur-texte-clair);
-            font-weight: 500;
-        }
-
         /* Footer ajusté pour la nouvelle structure */
         .stage-footer {
             margin-top: 80px;
@@ -289,13 +276,13 @@
                 margin-top: 30px;
             }
 
-            .gallery {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-                gap: 15px;
-            }
-
             .back-button {
                 padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+
+            .mission-doc-button {
+                padding: 12px 24px;
                 font-size: 0.95rem;
             }
         }
@@ -314,10 +301,6 @@
                 margin-top: 25px;
             }
 
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-
             .info-card {
                 padding: 20px;
             }
@@ -329,6 +312,12 @@
             .keyword-tag {
                 padding: 5px 10px;
                 font-size: 0.8rem;
+            }
+
+            .mission-doc-button {
+                display: block;
+                text-align: center;
+                padding: 12px 20px;
             }
         }
     </style>
@@ -403,6 +392,9 @@
                         <li>Mission 3 : Description courte de votre troisième mission</li>
                     </ul>
 
+                    <!-- Bouton d'accès à la documentation technique -->
+                    <a href="missions-stage1.html" class="mission-doc-button">📄 Accéder à la documentation technique des missions</a>
+
                     <!-- SECTION 3 : COMPÉTENCES ACQUISES -->
                     <h2>🎓 Compétences Développées</h2>
                     <!-- À remplacer : Détaillez les compétences acquises pendant votre stage -->
@@ -425,33 +417,7 @@
                         <li><strong>Base de données :</strong> [À remplir]</li>
                     </ul>
 
-                    <!-- SECTION 5 : RÉALISATIONS ET PROJETS SPÉCIFIQUES -->
-                    <h2>🚀 Réalisations Principales</h2>
-                    <!-- À remplacer : Décrivez les principaux projets ou livrables -->
-                    <p>
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia 
-                        consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                    </p>
-
-                    <!-- GALERIE - Zone pour ajouter des images, captures d'écran, etc. -->
-                    <h2>📸 Galerie</h2>
-                    <div class="gallery">
-                        <!-- À ajouter : Remplacez par vos images réelles -->
-                        <div class="gallery-item">
-                            <img src="https://via.placeholder.com/220x150" alt="Capture d'écran 1">
-                            <p>Description de l'image 1</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://via.placeholder.com/220x150" alt="Capture d'écran 2">
-                            <p>Description de l'image 2</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://via.placeholder.com/220x150" alt="Capture d'écran 3">
-                            <p>Description de l'image 3</p>
-                        </div>
-                    </div>
-
-                    <!-- SECTION 6 : APPRENTISSAGES ET BILAN PERSONNEL -->
+                    <!-- SECTION 5 : APPRENTISSAGES ET BILAN PERSONNEL -->
                     <h2>💡 Apprentissages et Bilan Personnel</h2>
                     <!-- À remplacer : Réfléchissez sur ce que vous avez appris et comment le stage vous a aidé -->
                     <p>
