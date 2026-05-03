@@ -502,3 +502,44 @@ body {
         padding: 8px;
     }
 }
+/* ============================================================
+   SECTION DOCUMENTATION - Accès Documentation
+   ============================================================ */
+
+.documentation-section {
+    background-color: #f3f4f6;            /* Gris très clair pour distinction */
+    padding: 80px 40px;
+}
+
+/* Grille centrée pour la carte unique */
+.documentation-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.documentation-grid .card-link {
+    max-width: 300px;
+    width: 100%;
+}
+
+/* ============================================================
+   RESPONSIVE - Documentation
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .documentation-section {
+        padding: 60px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .documentation-section {
+        padding: 50px 15px;
+        min-height: auto;
+    }
+
+    .documentation-grid .card-link {
+        max-width: 100%;
+    }
+}
