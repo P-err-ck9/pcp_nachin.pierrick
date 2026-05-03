@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accès Documentation - BTS SIO</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour la page documentation */
+        .documentation-main {
+            padding: 60px 40px;
+        }
+
+        .doc-section {
+            margin-bottom: 60px;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 4px solid var(--couleur-primaire);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .doc-section h3 {
+            font-size: 1.5rem;
+            color: var(--couleur-primaire);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .doc-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .doc-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .doc-list li:before {
+            content: "📄";
+            position: absolute;
+            left: 0;
+            color: var(--couleur-accent);
+        }
+
+        .doc-list a {
+            color: var(--couleur-primaire);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .doc-list a:hover {
+            color: var(--couleur-accent);
+            text-decoration: underline;
+            transform: translateX(4px);
+        }
+
+        .doc-title-page {
+            font-size: 2.5rem;
+            color: var(--couleur-primaire);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .doc-subtitle-page {
+            font-size: 1.1rem;
+            color: var(--couleur-texte-clair);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--couleur-primaire);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--couleur-accent);
+            transform: translateX(-4px);
+        }
+
+        @media (max-width: 768px) {
+            .documentation-main {
+                padding: 40px 25px;
+            }
+
+            .doc-section {
+                padding: 25px;
+                margin-bottom: 40px;
+            }
+
+            .doc-title-page {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .documentation-main {
+                padding: 30px 15px;
+            }
+
+            .doc-section {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+
+            .doc-section h3 {
+                font-size: 1.2rem;
+            }
+
+            .doc-title-page {
+                font-size: 1.5rem;
+            }
+
+            .doc-subtitle-page {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SIDEBAR - Menu de navigation fixe à gauche -->
+    <aside class="sidebar">
+        <!-- Logo/Nom personnel -->
+        <div class="sidebar-header">
+            <h1 class="sidebar-name">Nachin</h1>
+            <h1 class="sidebar-name">Pierrick</h1>
+            <p class="sidebar-title">BTS SIO - 2ème année</p>
+        </div>
+
+        <!-- Navigation avec ancres vers les sections -->
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li><a href="index.html#accueil" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#stages" class="nav-link">Mes Stages</a></li>
+                <li><a href="index.html#projets" class="nav-link">Projets</a></li>
+                <li><a href="index.html#documentation" class="nav-link">Documentation</a></li>
+                <li><a href="index.html#veille" class="nav-link">Veille</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Informations de contact en bas du sidebar -->
+        <div class="sidebar-footer">
+            <p><strong>Email :</strong></p>
+            <p><a href="mailto:votremail@example.com">votremail@example.com</a></p>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT - Zone scrollable avec le contenu principal -->
+    <main class="main-content">
+
+        <!-- HEADER DOCUMENTATION -->
+        <section class="section hero-section" style="min-height: auto; padding: 60px 40px;">
+            <div class="section-container">
+                <a href="index.html" class="back-link">← Retour à l'accueil</a>
+                <h1 class="doc-title-page">Accès à la Documentation</h1>
+                <p class="doc-subtitle-page">Retrouvez tous les documents relatifs à mes stages, projets et réalisations en un seul endroit.</p>
+            </div>
+        </section>
+
+        <!-- CONTENU DOCUMENTATION -->
+        <main class="documentation-main">
+            <div class="section-container">
+
+                <!-- SECTION STAGE 1 -->
+                <div class="doc-section">
+                    <h3>📋 Stage 1</h3>
+                    <ul class="doc-list">
+                        <li><a href="documents/Stage1_Rapport.pdf" target="_blank">Rapport de Stage 1</a></li>
+                        <li><a href="documents/Stage1_Presentation.pdf" target="_blank">Présentation Stage 1</a></li>
+                        <li><a href="documents/Stage1_Evaluations.pdf" target="_blank">Évaluations et Compétences</a></li>
+                        <li><a href="documents/Stage1_Projet.pdf" target="_blank">Projet Réalisé</a></li>
+                    </ul>
+                </div>
+
+                <!-- SECTION STAGE 2 -->
+                <div class="doc-section">
+                    <h3>📋 Stage 2</h3>
+                    <ul class="doc-list">
+                        <li><a href="documents/Stage2_Rapport.pdf" target="_blank">Rapport de Stage 2</a></li>
+                        <li><a href="documents/Stage2_Presentation.pdf" target="_blank">Présentation Stage 2</a></li>
+                        <li><a href="documents/Stage2_Evaluations.pdf" target="_blank">Évaluations et Compétences</a></li>
+                        <li><a href="documents/Stage2_Projet.pdf" target="_blank">Projet Réalisé</a></li>
+                    </ul>
+                </div>
+
+                <!-- SECTION RÉALISATIONS -->
+                <div class="doc-section">
+                    <h3>🏆 Réalisations en Cours de Formation</h3>
+                    <ul class="doc-list">
+                        <li><a href="documents/Realisation1_Description.pdf" target="_blank">Projet 1 - Description et Code</a></li>
+                        <li><a href="documents/Realisation2_Description.pdf" target="_blank">Projet 2 - Description et Code</a></li>
+                        <li><a href="documents/Realisation3_Description.pdf" target="_blank">Projet 3 - Description et Code</a></li>
+                        <li><a href="documents/CV_Competences.pdf" target="_blank">CV et Compétences Techniques</a></li>
+                        <li><a href="documents/Certifications.pdf" target="_blank">Certifications Obtenues</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>&copy; 2026 - Mon Portefeuille de Compétences | Développé avec passion</p>
+        </footer>
+
+    </main>
+</body>
+</html>
