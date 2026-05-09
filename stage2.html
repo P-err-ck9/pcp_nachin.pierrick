@@ -95,31 +95,6 @@
             color: var(--couleur-texte);
         }
 
-        /* Bouton moderne pour accéder à la documentation */
-        .documentation-button {
-            display: inline-block;
-            margin: 40px 0;
-            padding: 16px 32px;
-            background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
-            color: white;
-            text-decoration: none;
-            border-radius: var(--radius);
-            transition: all var(--transition);
-            font-weight: 600;
-            font-size: 1.05rem;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-        }
-
-        .documentation-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-            background: linear-gradient(135deg, var(--couleur-secondaire), var(--couleur-primaire));
-        }
-
-        .documentation-button:active {
-            transform: translateY(-2px);
-        }
-
         /* Carte de la barre latérale avec informations clés */
         .info-card {
             background: white;
@@ -244,6 +219,128 @@
             color: var(--couleur-accent);
         }
 
+        /* Conteneur principal du contenu missions */
+        .missions-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        /* Bloc de mission individuel */
+        .mission-block {
+            background: white;
+            border-radius: var(--radius);
+            border: 1px solid var(--couleur-bordure);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all var(--transition);
+        }
+
+        .mission-block:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Entête de bloc mission */
+        .mission-header {
+            background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+            color: white;
+            padding: 25px 30px;
+            border-bottom: 3px solid var(--couleur-accent);
+        }
+
+        .mission-header h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Contenu du bloc mission */
+        .mission-content {
+            padding: 30px;
+        }
+
+        /* Sous-section : Contexte Technique */
+        .mission-context {
+            margin-bottom: 30px;
+        }
+
+        .mission-context h4 {
+            color: var(--couleur-primaire);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .mission-context p {
+            color: var(--couleur-texte);
+            line-height: 1.8;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        /* Zone image */
+        .mission-image {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .mission-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .mission-image-placeholder {
+            background-color: var(--couleur-fond);
+            border: 2px dashed var(--couleur-bordure);
+            border-radius: var(--radius);
+            padding: 80px 40px;
+            text-align: center;
+            color: var(--couleur-texte-clair);
+            font-style: italic;
+        }
+
+        /* Sous-section : Actions Réalisées */
+        .mission-actions {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid var(--couleur-bordure);
+        }
+
+        .mission-actions h4 {
+            color: var(--couleur-primaire);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .mission-actions ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mission-actions li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--couleur-texte);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .mission-actions li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--couleur-accent);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
         /* Responsive pour tablette et mobile */
         @media (max-width: 1024px) {
             .detail-content {
@@ -262,6 +359,10 @@
             .detail-header h1 {
                 font-size: 2.2rem;
             }
+
+            .mission-content {
+                padding: 25px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -279,14 +380,17 @@
                 margin-top: 30px;
             }
 
-            .documentation-button {
-                padding: 14px 28px;
-                font-size: 1rem;
-            }
-
             .back-button {
                 padding: 10px 20px;
                 font-size: 0.95rem;
+            }
+
+            .mission-header h3 {
+                font-size: 1.35rem;
+            }
+
+            .mission-content {
+                padding: 20px;
             }
         }
 
@@ -308,12 +412,39 @@
                 padding: 20px;
             }
 
-            .documentation-button {
-                display: block;
-                text-align: center;
-                padding: 12px 20px;
-                font-size: 0.95rem;
-                margin: 30px 0;
+            .keywords {
+                gap: 8px;
+            }
+
+            .keyword-tag {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+
+            .mission-header {
+                padding: 20px 15px;
+            }
+
+            .mission-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .mission-content {
+                padding: 15px;
+            }
+
+            .mission-context h4,
+            .mission-actions h4 {
+                font-size: 1rem;
+            }
+
+            .mission-actions li {
+                padding-left: 25px;
+                font-size: 0.9rem;
+            }
+
+            .mission-image-placeholder {
+                padding: 60px 20px;
             }
         }
     </style>
@@ -365,7 +496,7 @@
                 <section class="main-text">
 
                     <!-- SECTION 1 : PRÉSENTATION DE L'ENTREPRISE/ORGANISATION -->
-                    <h2>🏢 Présentation de Poher communauté</h2>
+                    <h2>🏢 Présentation de l'Entreprise</h2>
                     <!-- À remplacer : Décrivez l'entreprise, son secteur, sa taille, etc. -->
                     <p>
                     Poher Communauté est une collectivité territoriale fédérant 11 communes. Cette structure mutualise les ressources et les compétences publiques pour un bassin de millier d'usagers. 
@@ -385,50 +516,6 @@
                         <li>Deuxième mission : Réalisation d'une documentation sur l'utilisation des plugins que j'ai utilisés lors du stage,pour laissé une trace écrite de mon travail.</li>
                     </ul>
 
-                    <!-- SECTION 3 : COMPÉTENCES ACQUISES -->
-                    <h2>🎓 Compétences Développées</h2>
-                    <!-- À remplacer : Détaillez les compétences acquises pendant votre stage -->
-                    <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque 
-                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
-                        architecto beatae vitae dicta sunt explicabo.
-                    </p>
-
-                    <!-- SECTION 4 : TECHNOLOGIES ET OUTILS UTILISÉS -->
-                    <h2>💻 Technologies et Outils</h2>
-                    <!-- À remplacer : Listez les langages, frameworks, outils, logiciels utilisés -->
-                    <p>
-                        Pendant ce stage, j'ai utilisé :
-                    </p>
-                    <ul>
-                        <li><strong>Langage de programmation :</strong> [À remplir]</li>
-                        <li><strong>Framework/Librairie :</strong> [À remplir]</li>
-                        <li><strong>Outils :</strong> Glpi </li>
-                        <li><strong>Base de données :</strong> [À remplir]</li>
-                    </ul>
-
-                    <!-- BOUTON ACCÈS DOCUMENTATION TECHNIQUE -->
-                    <div>
-                        <a href="mission-stage2.html" class="documentation-button">📚 Accéder à la documentation technique</a>
-                    </div>
-
-                    <!-- SECTION 5 : APPRENTISSAGES ET BILAN PERSONNEL -->
-                    <h2>💡 Apprentissages et Bilan Personnel</h2>
-                    <!-- À remplacer : Réfléchissez sur ce que vous avez appris et comment le stage vous a aidé -->
-                    <p>
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium 
-                        voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati 
-                        cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
-                        id est laborum et dolorum fuga.
-                    </p>
-
-                    <!-- Footer de la page stage -->
-                    <div class="stage-footer">
-                        <p>&copy; 2026 - Mon Portefeuille de Compétences | 
-                           <a href="mailto:votremail@example.com">Me contacter</a>
-                        </p>
-                    </div>
-
                 </section>
 
                 <!-- BARRE LATÉRALE - Informations clés en carte propre -->
@@ -446,7 +533,19 @@
                         </ul>
                     </div>
 
-                    <!-- SECTION 2 : RESSOURCES ET LIENS -->
+                    <!-- SECTION 2 : MOTS-CLÉS EN PETITS BLOCS -->
+                    <div class="info-section">
+                        <h3>🔑 Mots-clés</h3>
+                        <div class="keywords">
+                            <!-- À remplacer : Ajoutez vos propres mots-clés -->
+                            <span class="keyword-tag">GLPI</span>
+                            <span class="keyword-tag">Maintenance</span>
+                            <span class="keyword-tag">IT</span>
+                            <span class="keyword-tag">Base de données</span>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 3 : RESSOURCES ET LIENS -->
                     <div class="info-section">
                         <h3>📚 Ressources</h3>
                         <ul class="resources-list">
@@ -461,6 +560,120 @@
 
             </div>
         </div>
+
+        <!-- CONTENU MISSIONS - Section séparée et complète -->
+        <div style="padding: 0 40px 60px 40px;">
+            <div class="missions-container">
+        
+                <!-- MISSION 1 -->
+                <div class="mission-block">
+                    <div class="mission-header">
+                        <h3>🎯 Mission 1 : [Titre de la Mission]</h3>
+                    </div>
+                    <div class="mission-content">
+                        <!-- Contexte Technique -->
+                        <div class="mission-context">
+                            <h4>📍 Contexte Technique</h4>
+                            <p>
+                                Décrivez le contexte technique de cette mission...
+                            </p>
+                        </div>
+        
+                        <!-- Image de la mission -->
+                        <div class="mission-image">
+                            <div class="mission-image-placeholder">
+                                <p>Image de démonstration ou capture d'écran<br><small>(Remplacez par votre image : src="chemin/vers/image.jpg")</small></p>
+                            </div>
+                        </div>
+        
+                        <!-- Actions Réalisées -->
+                        <div class="mission-actions">
+                            <h4>✅ Actions Réalisées</h4>
+                            <ul>
+                                <li>Action 1 : Description détaillée...</li>
+                                <li>Action 2 : Description détaillée...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- MISSION 2 -->
+                <div class="mission-block">
+                    <div class="mission-header">
+                        <h3>🎯 Mission 2 : [Titre de la Mission]</h3>
+                    </div>
+                    <div class="mission-content">
+                        <!-- Contexte Technique -->
+                        <div class="mission-context">
+                            <h4>📍 Contexte Technique</h4>
+                            <p>
+                                Décrivez le contexte technique de cette mission...
+                            </p>
+                        </div>
+        
+                        <!-- Image de la mission -->
+                        <div class="mission-image">
+                            <div class="mission-image-placeholder">
+                                <p>Image de démonstration ou capture d'écran<br><small>(Remplacez par votre image : src="chemin/vers/image.jpg")</small></p>
+                            </div>
+                        </div>
+
+                        <!-- Actions Réalisées -->
+                        <div class="mission-actions">
+                            <h4>✅ Actions Réalisées</h4>
+                            <ul>
+                                <li>Action 1 : Description détaillée...</li>
+                                <li>Action 2 : Description détaillée...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3 : COMPÉTENCES ACQUISES - Après les missions -->
+        <div style="padding: 0 40px 60px 40px;">
+            <section class="main-text">
+                <h2>🎓 Compétences Développées</h2>
+                <!-- À remplacer : Détaillez les compétences acquises pendant votre stage -->
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque 
+                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
+                    architecto beatae vitae dicta sunt explicabo.
+                </p>
+
+                <!-- SECTION 4 : TECHNOLOGIES ET OUTILS UTILISÉS -->
+                <h2>💻 Technologies et Outils</h2>
+                <!-- À remplacer : Listez les langages, frameworks, outils, logiciels utilisés -->
+                <p>
+                    Pendant ce stage, j'ai utilisé :
+                </p>
+                <ul>
+                    <li><strong>Langage de programmation :</strong> [À remplir]</li>
+                    <li><strong>Framework/Librairie :</strong> [À remplir]</li>
+                    <li><strong>Outils :</strong> GLPI</li>
+                    <li><strong>Base de données :</strong> [À remplir]</li>
+                </ul>
+
+                <!-- SECTION 5 : APPRENTISSAGES ET BILAN PERSONNEL -->
+                <h2>💡 Apprentissages et Bilan Personnel</h2>
+                <!-- À remplacer : Réfléchissez sur ce que vous avez appris et comment le stage vous a aidé -->
+                <p>
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium 
+                    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati 
+                    cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
+                    id est laborum et dolorum fuga.
+                </p>
+
+                <!-- Footer de la page stage -->
+                <div class="stage-footer">
+                    <p>&copy; 2026 - Mon Portefeuille de Compétences | 
+                       <a href="mailto:votremail@example.com">Me contacter</a>
+                    </p>
+                </div>
+            </section>
+        </div>
+
     </main>
 </body>
 </html>
