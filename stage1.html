@@ -320,6 +320,172 @@
                 padding: 12px 20px;
             }
         }
+        /* Conteneur principal du contenu missions */
+.missions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* Bloc de mission individuel */
+.mission-block {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--couleur-bordure);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all var(--transition);
+}
+
+.mission-block:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Entête de bloc mission */
+.mission-header {
+    background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+    color: white;
+    padding: 25px 30px;
+    border-bottom: 3px solid var(--couleur-accent);
+}
+
+.mission-header h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Contenu du bloc mission */
+.mission-content {
+    padding: 30px;
+}
+
+/* Sous-section : Contexte Technique */
+.mission-context {
+    margin-bottom: 30px;
+}
+
+.mission-context h4 {
+    color: var(--couleur-primaire);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.mission-context p {
+    color: var(--couleur-texte);
+    line-height: 1.8;
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+/* Zone image */
+.mission-image {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.mission-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.mission-image-placeholder {
+    background-color: var(--couleur-fond);
+    border: 2px dashed var(--couleur-bordure);
+    border-radius: var(--radius);
+    padding: 80px 40px;
+    text-align: center;
+    color: var(--couleur-texte-clair);
+    font-style: italic;
+}
+
+/* Sous-section : Actions Réalisées */
+.mission-actions {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 2px solid var(--couleur-bordure);
+}
+
+.mission-actions h4 {
+    color: var(--couleur-primaire);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.mission-actions ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mission-actions li {
+    padding: 12px 0;
+    padding-left: 30px;
+    position: relative;
+    color: var(--couleur-texte);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.mission-actions li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--couleur-accent);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* Responsive pour tablette et mobile */
+@media (max-width: 1024px) {
+    .mission-content {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mission-header h3 {
+        font-size: 1.35rem;
+    }
+
+    .mission-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mission-header {
+        padding: 20px 15px;
+    }
+
+    .mission-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .mission-content {
+        padding: 15px;
+    }
+
+    .mission-context h4,
+    .mission-actions h4 {
+        font-size: 1rem;
+    }
+
+    .mission-actions li {
+        padding-left: 25px;
+        font-size: 0.9rem;
+    }
+
+    .mission-image-placeholder {
+        padding: 60px 20px;
+    }
+}
     </style>
 </head>
 <body>
@@ -395,6 +561,73 @@
                     <!-- Bouton d'accès à la documentation technique -->
                     <a href="mission-stage1.html" class="mission-doc-button">📄 Accéder à la documentation technique des missions</a>
 
+                    <!-- CONTENU MISSIONS -->
+        <div style="padding: 0 40px 60px 40px;">
+            <div class="missions-container">
+        
+                <!-- MISSION 1 -->
+                <div class="mission-block">
+                    <div class="mission-header">
+                        <h3>🎯 Mission 1 : [Titre de la Mission]</h3>
+                    </div>
+                    <div class="mission-content">
+                        <!-- Contexte Technique -->
+                        <div class="mission-context">
+                            <h4>📍 Contexte Technique</h4>
+                            <p>
+                                Décrivez le contexte technique de cette mission...
+                            </p>
+                        </div>
+        
+                        <!-- Image de la mission -->
+                        <div class="mission-image">
+                            <div class="mission-image-placeholder">
+                                <p>Image de démonstration ou capture d'écran<br><small>(Remplacez par votre image : src="chemin/vers/image.jpg")</small></p>
+                            </div>
+                        </div>
+        
+                        <!-- Actions Réalisées -->
+                        <div class="mission-actions">
+                            <h4>✅ Actions Réalisées</h4>
+                            <ul>
+                                <li>Action 1 : Description détaillée...</li>
+                                <li>Action 2 : Description détaillée...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Répétez pour MISSION 2, MISSION 3, etc. -->
+                <div class="mission-block">
+                    <div class="mission-header">
+                        <h3>🎯 Mission 2 : [Titre de la Mission]</h3>
+                    </div>
+                    <div class="mission-content">
+                        <!-- Contexte Technique -->
+                        <div class="mission-context">
+                            <h4>📍 Contexte Technique</h4>
+                            <p>
+                                Décrivez le contexte technique de cette mission...
+                            </p>
+                        </div>
+        
+                        <!-- Image de la mission -->
+                        <div class="mission-image">
+                            <div class="mission-image-placeholder">
+                                <p>Image de démonstration ou capture d'écran<br><small>(Remplacez par votre image : src="chemin/vers/image.jpg")</small></p>
+                            </div>
+                        </div>
+
+                <!-- Actions Réalisées -->
+                <div class="mission-actions">
+                    <h4>✅ Actions Réalisées</h4>
+                    <ul>
+                        <li>Action 1 : Description détaillée...</li>
+                        <li>Action 2 : Description détaillée...</li>
+    </div>
+</div>
+
+
+                    
                     <!-- SECTION 3 : COMPÉTENCES ACQUISES -->
                     <h2>🎓 Compétences Développées</h2>
                     <!-- À remplacer : Détaillez les compétences acquises pendant votre stage -->
