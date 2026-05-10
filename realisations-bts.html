@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réalisations BTS - Mon Portefeuille de Compétences</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ============================================================
+           STYLES SPÉCIFIQUES AUX PAGES DE RÉALISATIONS
+           
+           Ces styles s'ajoutent au style.css principal et personnalisent
+           les pages détaillées de réalisations, compatibles avec la sidebar.
+           ============================================================ */
+
+        /* Bouton de retour à l'accueil */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 12px 24px;
+            background-color: var(--couleur-primaire);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            background-color: var(--couleur-secondaire);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Bouton d'accès à la documentation technique */
+        .project-doc-button {
+            display: inline-block;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            padding: 14px 28px;
+            background-color: var(--couleur-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            font-weight: 600;
+            border: 2px solid var(--couleur-accent);
+        }
+
+        .project-doc-button:hover {
+            background-color: transparent;
+            color: var(--couleur-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        /* En-tête de la page de détail */
+        .detail-header {
+            background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+            color: white;
+            padding: 60px 40px;
+            margin-bottom: 50px;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .detail-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .detail-header .subtitle {
+            font-size: 1.15rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        /* Section de contenu avec mise en page en colonnes */
+        .detail-content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Texte principal */
+        .main-text h2 {
+            color: var(--couleur-primaire);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .main-text h2:first-child {
+            margin-top: 0;
+        }
+
+        .main-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: var(--couleur-texte);
+            font-size: 1rem;
+        }
+
+        .main-text ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .main-text li {
+            margin-bottom: 10px;
+            color: var(--couleur-texte);
+        }
+
+        /* Carte de la barre latérale avec informations clés */
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid var(--couleur-bordure);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 30px;
+        }
+
+        .info-card h3 {
+            color: var(--couleur-primaire);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .info-card ul {
+            list-style: none;
+            margin-bottom: 0;
+        }
+
+        .info-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--couleur-bordure);
+            font-size: 0.9rem;
+            color: var(--couleur-texte);
+        }
+
+        .info-card li:last-child {
+            border-bottom: none;
+        }
+
+        .info-card strong {
+            color: var(--couleur-primaire);
+            font-weight: 600;
+        }
+
+        /* Séparation entre sections de la carte */
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-section:not(:last-child) {
+            padding-bottom: 25px;
+            border-bottom: 2px solid var(--couleur-bordure);
+        }
+
+        /* Mots-clés en petits blocs */
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .keyword-tag {
+            background-color: var(--couleur-fond);
+            color: var(--couleur-primaire);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--couleur-primaire);
+            transition: all var(--transition);
+        }
+
+        .keyword-tag:hover {
+            background-color: var(--couleur-primaire);
+            color: white;
+        }
+
+        /* Footer ajusté pour la nouvelle structure */
+        .realization-footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 2px solid var(--couleur-bordure);
+            text-align: center;
+            color: var(--couleur-texte-clair);
+            font-size: 0.9rem;
+        }
+
+        .realization-footer a {
+            color: var(--couleur-primaire);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .realization-footer a:hover {
+            color: var(--couleur-accent);
+        }
+
+        /* Responsive pour tablette et mobile */
+        @media (max-width: 1024px) {
+            .detail-content {
+                grid-template-columns: 1fr;
+            }
+
+            .info-card {
+                position: static;
+                margin-bottom: 50px;
+            }
+
+            .detail-header {
+                padding: 50px 30px;
+            }
+
+            .detail-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .detail-header {
+                padding: 40px 20px;
+                margin-bottom: 30px;
+            }
+
+            .detail-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .main-text h2 {
+                font-size: 1.35rem;
+                margin-top: 30px;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+
+            .project-doc-button {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .detail-header {
+                padding: 30px 15px;
+            }
+
+            .detail-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .main-text h2 {
+                font-size: 1.2rem;
+                margin-top: 25px;
+            }
+
+            .info-card {
+                padding: 20px;
+            }
+
+            .keywords {
+                gap: 8px;
+            }
+
+            .keyword-tag {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+
+            .project-doc-button {
+                display: block;
+                text-align: center;
+                padding: 12px 20px;
+            }
+        }
+
+        /* Conteneur principal du contenu réalisations */
+        .realizations-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        /* Bloc de réalisation individuelle */
+        .realization-block {
+            background: white;
+            border-radius: var(--radius);
+            border: 1px solid var(--couleur-bordure);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all var(--transition);
+        }
+
+        .realization-block:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Entête de bloc réalisation */
+        .realization-header {
+            background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+            color: white;
+            padding: 25px 30px;
+            border-bottom: 3px solid var(--couleur-accent);
+        }
+
+        .realization-header h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Contenu du bloc réalisation */
+        .realization-content {
+            padding: 30px;
+        }
+
+        /* Sous-section : Description */
+        .realization-description {
+            margin-bottom: 30px;
+        }
+
+        .realization-description h4 {
+            color: var(--couleur-primaire);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .realization-description p {
+            color: var(--couleur-texte);
+            line-height: 1.8;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        /* Zone image */
+        .realization-image {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .realization-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .realization-image-placeholder {
+            background-color: var(--couleur-fond);
+            border: 2px dashed var(--couleur-bordure);
+            border-radius: var(--radius);
+            padding: 80px 40px;
+            text-align: center;
+            color: var(--couleur-texte-clair);
+            font-style: italic;
+        }
+
+        /* Sous-section : Compétences/Technos */
+        .realization-details {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid var(--couleur-bordure);
+        }
+
+        .realization-details h4 {
+            color: var(--couleur-primaire);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .realization-details ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .realization-details li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--couleur-texte);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .realization-details li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--couleur-accent);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive pour tablette et mobile */
+        @media (max-width: 1024px) {
+            .realization-content {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .realization-header h3 {
+                font-size: 1.35rem;
+            }
+
+            .realization-content {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .realization-header {
+                padding: 20px 15px;
+            }
+
+            .realization-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .realization-content {
+                padding: 15px;
+            }
+
+            .realization-description h4,
+            .realization-details h4 {
+                font-size: 1rem;
+            }
+
+            .realization-details li {
+                padding-left: 25px;
+                font-size: 0.9rem;
+            }
+
+            .realization-image-placeholder {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SIDEBAR - Réutilisée depuis l'accueil (voir style.css) -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="sidebar-name">Pierrick</h1>
+            <p class="sidebar-title">BTS SIO - 2ème année</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li><a href="index.html#accueil" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#stages" class="nav-link">Mes Stages</a></li>
+                <li><a href="index.html#projets" class="nav-link">Réalisations au BTS</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p><strong>Email :</strong></p>
+            <p><a href="mailto:votremail@example.com">votremail@example.com</a></p>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT - Zone scrollable à droite -->
+    <main class="main-content">
+        <!-- Bouton retour en haut -->
+        <div style="padding: 50px 40px 20px 40px;">
+            <a href="index.html" class="back-button">← Retour à l'accueil</a>
+        </div>
+
+        <!-- EN-TÊTE DE DETAIL -->
+        <header class="detail-header">
+            <h1>Mes Réalisations en Cours de Formation</h1>
+            <p class="subtitle">Réalisations et projets du BTS SIO (2ème année)</p>
+        </header>
+
+        <!-- CONTENU PRINCIPAL avec sidebar -->
+        <div style="padding: 0 40px 60px 40px;">
+            <div class="detail-content">
+
+                <!-- COLONNE PRINCIPALE - Texte détaillé -->
+                <section class="main-text">
+
+                    <!-- SECTION 1 : INTRODUCTION -->
+                    <h2>📌 À propos de cette section</h2>
+                    <p>
+                        Au cours de ma formation en BTS SIO, j'ai eu l'opportunité de participer à plusieurs projets et réalisations. 
+                        Cette section présente les travaux académiques les plus significatifs que j'ai complétés au sein du programme.
+                    </p>
+
+                    <!-- SECTION 2 : CONTEXTE GÉNÉRAL -->
+                    <h2>🎓 Contexte de Formation</h2>
+                    <p>
+                        Ces réalisations ont été effectuées durant ma deuxième année de BTS SIO, dans le cadre de mes études et projets académiques. 
+                        Elles illustrent l'application de mes connaissances théoriques et ma capacité à mener des projets concrets.
+                    </p>
+                    <ul>
+                        <li>Projets académiques supervisés par les enseignants</li>
+                        <li>Travaux pratiques intégrant les savoirs faire</li>
+                        <li>Réalisations développant les compétences du référentiel BTS SIO</li>
+                    </ul>
+
+                </section>
+
+                <!-- BARRE LATÉRALE - Informations clés en carte propre -->
+                <aside class="info-card">
+                    <!-- SECTION 1 : INFORMATIONS CLÉS -->
+                    <div class="info-section">
+                        <h3>📌 Informations Clés</h3>
+                        <ul>
+                            <li><strong>Année :</strong> 2ème année BTS</li>
+                            <li><strong>Formation :</strong> BTS SIO</li>
+                            <li><strong>Domaines :</strong> Informatique</li>
+                            <li><strong>Période :</strong> 2025 - 2026</li>
+                        </ul>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+
+        <!-- CONTENU RÉALISATIONS - Section séparée et complète -->
+        <div style="padding: 0 40px 60px 40px;">
+            <div class="realizations-container">
+        
+                <!-- RÉALISATION 1 -->
+                <div class="realization-block">
+                    <div class="realization-header">
+                        <h3>🚀 Réalisation 1 : [Titre du projet]</h3>
+                    </div>
+                    <div class="realization-content">
+                        <!-- Description -->
+                        <div class="realization-description">
+                            <h4>📋 Description du Projet</h4>
+                            <p>
+                                À remplir : Décrivez votre projet, ses objectifs, le contexte et l'importance de cette réalisation 
+                                dans votre formation. Expliquez comment ce projet s'inscrit dans votre parcours pédagogique et quels 
+                                ont été les enjeux principaux.
+                            </p>
+                        </div>
+         
+                        <!-- Image de la réalisation -->
+                        <div class="realization-image">
+                            <div class="realization-image-placeholder">
+                                <p>Image de démonstration ou capture d'écran<br><small>(Remplacez par votre image : src="chemin/vers/image.jpg")</small></p>
+                            </div>
+                        </div>
+         
+                        <!-- Compétences et détails -->
+                        <div class="realization-details">
+                            <h4>🛠️ Compétences Développées</h4>
+                            <ul>
+                                <li>Compétence 1 : Description</li>
+                                <li>Compétence 2 : Description</li>
+                                <li>Compétence 3 : Description</li>
+                            </ul>
+                            <h4 style="margin-top: 20px;">💻 Technologies Utilisées</h4>
+                            <ul>
+                                <li>Technologie 1</li>
+                                <li>Technologie 2</li>
+                                <li>Technologie 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- RÉALISATION 2 -->
+                <div class="realization-block">
+                    <div class="realization-header">
+                        <h3>🎯 Réalisation 2 : [Titre du projet]</h3>
+                    </div>
+                    <div class="realization-content">
+                        <!-- Description -->
+                        <div class="realization-description">
+                            <h4>📋 Description du Projet</h4>
+                            <p>
+                                À remplir : Décrivez votre deuxième projet, en mettant l'accent sur ses spécificités, 
+                                les défis rencontrés et comment vous les avez surmontés.
+                            </p>
+                        </div>
+         
+                        <!-- Image de la réalisation -->
+                        <div class="realization-image">
+                            <div class="realization-image-placeholder">
+                                <p>Image de démonstration ou capture d'écran<br><small>(Remplacez par votre image : src="chemin/vers/image.jpg")</small></p>
+                            </div>
+                        </div>
+
+                        <!-- Compétences et détails -->
+                        <div class="realization-details">
+                            <h4>🛠️ Compétences Développées</h4>
+                            <ul>
+                                <li>Compétence 1 : Description</li>
+                                <li>Compétence 2 : Description</li>
+                            </ul>
+                            <h4 style="margin-top: 20px;">💻 Technologies Utilisées</h4>
+                            <ul>
+                                <li>Technologie 1</li>
+                                <li>Technologie 2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RÉALISATION 3 -->
+                <div class="realization-block">
+                    <div class="realization-header">
+                        <h3>💡 Réalisation 3 : [Titre du projet]</h3>
+                    </div>
+                    <div class="realization-content">
+                        <!-- Description -->
+                        <div class="realization-description">
+                            <h4>📋 Description du Projet</h4>
+                            <p>
+                                À remplir : Décrivez votre troisième projet de formation.
+                            </p>
+                        </div>
+         
+                        <!-- Image de la réalisation -->
+                        <div class="realization-image">
+                            <div class="realization-image-placeholder">
+                                <p>Image de démonstration ou capture d'écran<br><small>(Remplacez par votre image : src="chemin/vers/image.jpg")</small></p>
+                            </div>
+                        </div>
+
+                        <!-- Compétences et détails -->
+                        <div class="realization-details">
+                            <h4>🛠️ Compétences Développées</h4>
+                            <ul>
+                                <li>Compétence 1 : Description</li>
+                                <li>Compétence 2 : Description</li>
+                            </ul>
+                            <h4 style="margin-top: 20px;">💻 Technologies Utilisées</h4>
+                            <ul>
+                                <li>Technologie 1</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION FINALE : BILAN ET APPRENTISSAGES -->
+        <div style="padding: 0 40px 60px 40px;">
+            <section class="main-text">
+                <h2>📚 Apprentissages et Réflexion</h2>
+                <p>
+                    À remplir : Réfléchissez sur ce que vous avez appris à travers ces différentes réalisations. 
+                    Comment ces expériences vous ont-elles préparé pour la vie professionnelle ? Quels sont les points forts 
+                    et les axes d'amélioration que vous avez identifiés ?
+                </p>
+
+                <h2>🎓 Évolution Professionnelle</h2>
+                <p>
+                    À remplir : Décrivez comment ces réalisations vous ont aidé à développer vos compétences professionnelles 
+                    et votre confiance dans le domaine de l'informatique.
+                </p>
+
+                <!-- Footer de la page réalisations -->
+                <div class="realization-footer">
+                    <p>&copy; 2026 - Mon Portefeuille de Compétences | 
+                       <a href="mailto:votremail@example.com">Me contacter</a>
+                    </p>
+                </div>
+            </section>
+        </div>
+
+    </main>
+</body>
+</html>
