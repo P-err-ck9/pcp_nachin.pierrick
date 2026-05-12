@@ -3,460 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- À modifier : Remplacez "Deuxième Stage" par le titre de votre stage -->
     <title>Deuxième Stage - Mon Portefeuille de Compétences</title>
-    <!-- Lien vers le fichier CSS principal -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Feuille de style additionnelle pour les pages de détail -->
     <style>
-        /* ============================================================
-           STYLES SPÉCIFIQUES AUX PAGES DE STAGE
-           
-           Ces styles s'ajoutent au style.css principal et personnalisent
-           les pages détaillées de stage, compatibles avec la sidebar.
-           ============================================================ */
-
-        /* Bouton de retour à l'accueil */
-        .back-button {
-            display: inline-block;
-            margin-bottom: 30px;
-            padding: 12px 24px;
-            background-color: var(--couleur-primaire);
-            color: white;
-            text-decoration: none;
-            border-radius: var(--radius);
-            transition: all var(--transition);
-            font-weight: 500;
+        /* STYLE.CSS INTÉGRÉ */
+        :root {
+            --couleur-primaire: #2563eb;
+            --couleur-secondaire: #1e40af;
+            --couleur-accent: #f59e0b;
+            --couleur-fond: #f8fafc;
+            --couleur-texte: #1f2937;
+            --couleur-texte-clair: #6b7280;
+            --couleur-bordure: #e5e7eb;
+            --couleur-sidebar: #1a1c1e;
+            --couleur-sidebar-texte: #e5e7eb;
+            --sidebar-width: 280px;
+            --radius: 12px;
+            --transition: 0.3s ease-in-out;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px; color: var(--couleur-texte);
+            background-color: var(--couleur-fond); line-height: 1.6; display: flex;
+        }
+        .sidebar {
+            position: fixed; left: 0; top: 0;
+            width: var(--sidebar-width); height: 100vh;
+            background-color: var(--couleur-sidebar); color: var(--couleur-sidebar-texte);
+            padding: 40px 25px; display: flex; flex-direction: column;
+            box-shadow: 4px 0 12px rgba(0,0,0,0.15); z-index: 100;
+        }
+        .sidebar-header { margin-bottom: 50px; border-bottom: 2px solid rgba(229,231,235,0.2); padding-bottom: 25px; }
+        .sidebar-name { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; color: white; }
+        .sidebar-title { font-size: 0.9rem; color: var(--couleur-texte-clair); font-weight: 300; }
+        .sidebar-nav { flex: 1; }
+        .nav-list { list-style: none; }
+        .nav-link {
+            display: block; padding: 12px 16px; color: var(--couleur-sidebar-texte);
+            text-decoration: none; margin-bottom: 8px; border-radius: var(--radius);
+            transition: all var(--transition); font-weight: 500;
+        }
+        .nav-link:hover { background-color: rgba(37,99,235,0.15); color: var(--couleur-primaire); transform: translateX(8px); }
+        .nav-link.active { background-color: var(--couleur-primaire); color: white; }
+        .sidebar-footer { border-top: 2px solid rgba(229,231,235,0.2); padding-top: 25px; font-size: 0.85rem; }
+        .sidebar-footer p { margin-bottom: 8px; }
+        .sidebar-footer a { color: var(--couleur-primaire); text-decoration: none; }
+        .sidebar-footer a:hover { color: var(--couleur-accent); }
+        .main-content {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            min-height: 100vh; overflow-y: auto;
         }
 
+        /* STYLES PAGES DE STAGE */
+        .back-button {
+            display: inline-block; margin-bottom: 30px; padding: 12px 24px;
+            background-color: var(--couleur-primaire); color: white;
+            text-decoration: none; border-radius: var(--radius);
+            transition: all var(--transition); font-weight: 500;
+        }
         .back-button:hover {
             background-color: var(--couleur-secondaire);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+            transform: translateY(-3px); box-shadow: 0 6px 12px rgba(37,99,235,0.3);
         }
-
-        /* En-tête de la page de détail */
         .detail-header {
             background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
-            color: white;
-            padding: 60px 40px;
-            margin-bottom: 50px;
-            border-radius: var(--radius);
-            text-align: center;
+            color: white; padding: 60px 40px; margin-bottom: 50px;
+            border-radius: var(--radius); text-align: center;
         }
-
-        .detail-header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .detail-header .dates {
-            font-size: 1.15rem;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        /* Section de contenu avec mise en page en colonnes */
+        .detail-header h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 700; }
+        .detail-header .dates { font-size: 1.15rem; opacity: 0.95; font-weight: 300; }
         .detail-content {
-            display: grid;
-            grid-template-columns: 1fr 320px;  /* Colonne principale + barre latérale */
-            gap: 40px;
-            align-items: start;
+            display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start;
         }
-
-        /* Texte principal du stage */
         .main-text h2 {
-            color: var(--couleur-primaire);
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 1.6rem;
-            font-weight: 600;
+            color: var(--couleur-primaire); margin-top: 40px; margin-bottom: 20px;
+            font-size: 1.6rem; font-weight: 600;
         }
-
-        .main-text h2:first-child {
-            margin-top: 0;
-        }
-
-        .main-text p {
-            margin-bottom: 20px;
-            line-height: 1.8;
-            color: var(--couleur-texte);
-            font-size: 1rem;
-        }
-
-        .main-text ul {
-            margin-left: 30px;
-            margin-bottom: 20px;
-        }
-
-        .main-text li {
-            margin-bottom: 10px;
-            color: var(--couleur-texte);
-        }
-
-        /* Carte de la barre latérale avec informations clés */
+        .main-text h2:first-child { margin-top: 0; }
+        .main-text p { margin-bottom: 20px; line-height: 1.8; color: var(--couleur-texte); font-size: 1rem; }
+        .main-text ul { margin-left: 30px; margin-bottom: 20px; }
+        .main-text li { margin-bottom: 10px; color: var(--couleur-texte); }
         .info-card {
-            background: white;
-            padding: 30px;
-            border-radius: var(--radius);
-            border: 1px solid var(--couleur-bordure);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            position: sticky;
-            top: 30px;
+            background: white; padding: 30px; border-radius: var(--radius);
+            border: 1px solid var(--couleur-bordure); box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky; top: 30px;
         }
-
-        .info-card h3 {
-            color: var(--couleur-primaire);
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .info-card ul {
-            list-style: none;
-            margin-bottom: 0;
-        }
-
-        .info-card li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--couleur-bordure);
-            font-size: 0.9rem;
-            color: var(--couleur-texte);
-        }
-
-        .info-card li:last-child {
-            border-bottom: none;
-        }
-
-        .info-card strong {
-            color: var(--couleur-primaire);
-            font-weight: 600;
-        }
-
-        /* Séparation entre sections de la carte */
-        .info-section {
-            margin-bottom: 25px;
-        }
-
-        .info-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .info-section:not(:last-child) {
-            padding-bottom: 25px;
-            border-bottom: 2px solid var(--couleur-bordure);
-        }
-
-        /* Mots-clés en petits blocs */
-        .keywords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .keyword-tag {
-            background-color: var(--couleur-fond);
-            color: var(--couleur-primaire);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid var(--couleur-primaire);
-            transition: all var(--transition);
-        }
-
-        .keyword-tag:hover {
-            background-color: var(--couleur-primaire);
-            color: white;
-        }
-
-        /* Ressources - Liste de liens */
-        .resources-list {
-            list-style: none;
-        }
-
-        .resources-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--couleur-bordure);
-        }
-
-        .resources-list li:last-child {
-            border-bottom: none;
-        }
-
-        .resources-list a {
-            color: var(--couleur-primaire);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color var(--transition);
-        }
-
-        .resources-list a:hover {
-            color: var(--couleur-accent);
-            text-decoration: underline;
-        }
-
-        /* Footer ajusté pour la nouvelle structure */
+        .info-card h3 { color: var(--couleur-primaire); margin-bottom: 20px; font-size: 1.1rem; font-weight: 600; }
+        .info-card ul { list-style: none; margin-bottom: 0; }
+        .info-card li { padding: 10px 0; border-bottom: 1px solid var(--couleur-bordure); font-size: 0.9rem; color: var(--couleur-texte); }
+        .info-card li:last-child { border-bottom: none; }
+        .info-card strong { color: var(--couleur-primaire); font-weight: 600; }
+        .info-section { margin-bottom: 25px; }
+        .info-section:last-child { margin-bottom: 0; }
+        .info-section:not(:last-child) { padding-bottom: 25px; border-bottom: 2px solid var(--couleur-bordure); }
         .stage-footer {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 2px solid var(--couleur-bordure);
-            text-align: center;
-            color: var(--couleur-texte-clair);
-            font-size: 0.9rem;
+            margin-top: 80px; padding-top: 40px; border-top: 2px solid var(--couleur-bordure);
+            text-align: center; color: var(--couleur-texte-clair); font-size: 0.9rem;
         }
+        .stage-footer a { color: var(--couleur-primaire); text-decoration: none; }
+        .stage-footer a:hover { color: var(--couleur-accent); }
 
-        .stage-footer a {
-            color: var(--couleur-primaire);
-            text-decoration: none;
-            transition: color var(--transition);
-        }
-
-        .stage-footer a:hover {
-            color: var(--couleur-accent);
-        }
-
-        /* Conteneur principal du contenu missions */
-        .missions-container {
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-        }
-
-        /* Bloc de mission individuel */
+        /* MISSIONS */
+        .missions-container { display: flex; flex-direction: column; gap: 50px; }
         .mission-block {
-            background: white;
-            border-radius: var(--radius);
+            background: white; border-radius: var(--radius);
             border: 1px solid var(--couleur-bordure);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: all var(--transition);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden; transition: all var(--transition);
         }
-
-        .mission-block:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-        }
-
-        /* Entête de bloc mission */
+        .mission-block:hover { box-shadow: 0 8px 16px rgba(0,0,0,0.12); }
         .mission-header {
             background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
-            color: white;
-            padding: 25px 30px;
+            color: white; padding: 25px 30px;
             border-bottom: 3px solid var(--couleur-accent);
         }
-
-        .mission-header h3 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        /* Contenu du bloc mission */
-        .mission-content {
-            padding: 30px;
-        }
-
-        /* Sous-section : Contexte Technique */
-        .mission-context {
-            margin-bottom: 30px;
-        }
-
-        .mission-context h4 {
-            color: var(--couleur-primaire);
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .mission-context p {
-            color: var(--couleur-texte);
-            line-height: 1.8;
-            margin-bottom: 0;
-            font-size: 1rem;
-        }
-
-        /* Zone image */
-        .mission-image {
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .mission-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: var(--radius);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-height: 400px;
-            object-fit: cover;
-        }
-
-        .mission-image-placeholder {
-            background-color: var(--couleur-fond);
-            border: 2px dashed var(--couleur-bordure);
-            border-radius: var(--radius);
-            padding: 80px 40px;
-            text-align: center;
-            color: var(--couleur-texte-clair);
-            font-style: italic;
-        }
-
-        /* Sous-section : Actions Réalisées */
-        .mission-actions {
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 2px solid var(--couleur-bordure);
-        }
-
-        .mission-actions h4 {
-            color: var(--couleur-primaire);
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .mission-actions ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
+        .mission-header h3 { font-size: 1.6rem; font-weight: 600; margin: 0; }
+        .mission-content { padding: 30px; }
+        .mission-context { margin-bottom: 30px; }
+        .mission-context h4 { color: var(--couleur-primaire); font-size: 1.15rem; font-weight: 600; margin-bottom: 15px; }
+        .mission-context p { color: var(--couleur-texte); line-height: 1.8; margin-bottom: 0; font-size: 1rem; }
+        .mission-actions { margin-top: 25px; padding-top: 25px; border-top: 2px solid var(--couleur-bordure); }
+        .mission-actions h4 { color: var(--couleur-primaire); font-size: 1.15rem; font-weight: 600; margin-bottom: 15px; }
+        .mission-actions ul { list-style: none; margin: 0; padding: 0; }
         .mission-actions li {
-            padding: 12px 0;
-            padding-left: 30px;
-            position: relative;
-            color: var(--couleur-texte);
-            line-height: 1.6;
-            font-size: 0.95rem;
+            padding: 12px 0; padding-left: 30px; position: relative;
+            color: var(--couleur-texte); line-height: 1.6; font-size: 0.95rem;
         }
-
         .mission-actions li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--couleur-accent);
-            font-weight: 600;
-            font-size: 1.2rem;
+            content: "✓"; position: absolute; left: 0;
+            color: var(--couleur-accent); font-weight: 600; font-size: 1.2rem;
         }
 
-        /* Responsive pour tablette et mobile */
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
-            .detail-content {
-                grid-template-columns: 1fr;
-            }
-
-            .info-card {
-                position: static;
-                margin-bottom: 50px;
-            }
-
-            .detail-header {
-                padding: 50px 30px;
-            }
-
-            .detail-header h1 {
-                font-size: 2.2rem;
-            }
-
-            .mission-content {
-                padding: 25px;
-            }
+            .detail-content { grid-template-columns: 1fr; }
+            .info-card { position: static; margin-bottom: 50px; }
+            .detail-header { padding: 50px 30px; }
+            .detail-header h1 { font-size: 2.2rem; }
+            .mission-content { padding: 25px; }
         }
-
         @media (max-width: 768px) {
-            .detail-header {
-                padding: 40px 20px;
-                margin-bottom: 30px;
-            }
-
-            .detail-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .main-text h2 {
-                font-size: 1.35rem;
-                margin-top: 30px;
-            }
-
-            .back-button {
-                padding: 10px 20px;
-                font-size: 0.95rem;
-            }
-
-            .mission-header h3 {
-                font-size: 1.35rem;
-            }
-
-            .mission-content {
-                padding: 20px;
-            }
+            :root { --sidebar-width: 70px; }
+            .sidebar { padding: 20px 10px; }
+            .sidebar-header { margin-bottom: 30px; padding-bottom: 15px; }
+            .sidebar-name { font-size: 1.2rem; }
+            .sidebar-title { display: none; }
+            .sidebar-footer { display: none; }
+            .detail-header { padding: 40px 20px; margin-bottom: 30px; }
+            .detail-header h1 { font-size: 1.8rem; }
+            .main-text h2 { font-size: 1.35rem; margin-top: 30px; }
+            .back-button { padding: 10px 20px; font-size: 0.95rem; }
+            .mission-header h3 { font-size: 1.35rem; }
+            .mission-content { padding: 20px; }
         }
-
         @media (max-width: 480px) {
-            .detail-header {
-                padding: 30px 15px;
-            }
-
-            .detail-header h1 {
-                font-size: 1.5rem;
-            }
-
-            .main-text h2 {
-                font-size: 1.2rem;
-                margin-top: 25px;
-            }
-
-            .info-card {
-                padding: 20px;
-            }
-
-            .keywords {
-                gap: 8px;
-            }
-
-            .keyword-tag {
-                padding: 5px 10px;
-                font-size: 0.8rem;
-            }
-
-            .mission-header {
-                padding: 20px 15px;
-            }
-
-            .mission-header h3 {
-                font-size: 1.2rem;
-            }
-
-            .mission-content {
-                padding: 15px;
-            }
-
-            .mission-context h4,
-            .mission-actions h4 {
-                font-size: 1rem;
-            }
-
-            .mission-actions li {
-                padding-left: 25px;
-                font-size: 0.9rem;
-            }
-
-            .mission-image-placeholder {
-                padding: 60px 20px;
-            }
+            .detail-header { padding: 30px 15px; }
+            .detail-header h1 { font-size: 1.5rem; }
+            .main-text h2 { font-size: 1.2rem; margin-top: 25px; }
+            .info-card { padding: 20px; }
+            .mission-header { padding: 20px 15px; }
+            .mission-header h3 { font-size: 1.2rem; }
+            .mission-content { padding: 15px; }
+            .mission-context h4, .mission-actions h4 { font-size: 1rem; }
+            .mission-actions li { padding-left: 25px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
-    <!-- SIDEBAR - Réutilisée depuis l'accueil (voir style.css) -->
     <aside class="sidebar">
         <div class="sidebar-header">
             <h1 class="sidebar-name">Pierrick</h1>
             <p class="sidebar-title">BTS SIO - 2ème année</p>
         </div>
-
         <nav class="sidebar-nav">
             <ul class="nav-list">
                 <li><a href="index.html#accueil" class="nav-link">Accueil</a></li>
@@ -465,181 +185,139 @@
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
-
         <div class="sidebar-footer">
             <p><strong>Email :</strong></p>
             <p><a href="mailto:votremail@example.com">votremail@example.com</a></p>
         </div>
     </aside>
 
-    <!-- MAIN CONTENT - Zone scrollable à droite -->
     <main class="main-content">
-        <!-- Bouton retour en haut -->
         <div style="padding: 50px 40px 20px 40px;">
             <a href="index.html" class="back-button">← Retour à l'accueil</a>
         </div>
 
-        <!-- EN-TÊTE DE DETAIL - Titre et dates du stage -->
         <header class="detail-header">
-            <!-- À modifier : Remplacez par le nom de votre entreprise/organisation -->
             <h1>Deuxième Stage</h1>
-            <!-- À modifier : Remplacez les dates par les vôtres (format : du DD/MM/AAAA au DD/MM/AAAA) -->
             <p class="dates">Du [Date de début 2] au [Date de fin 2]</p>
         </header>
 
-        <!-- CONTENU PRINCIPAL avec sidebar -->
         <div style="padding: 0 40px 60px 40px;">
             <div class="detail-content">
-
-                <!-- COLONNE PRINCIPALE - Texte détaillé du stage -->
                 <section class="main-text">
-
-                    <!-- SECTION 1 : PRÉSENTATION DE L'ENTREPRISE/ORGANISATION -->
                     <h2>🏢 Présentation de l'Entreprise</h2>
-                    <!-- À remplacer : Décrivez l'entreprise, son secteur, sa taille, etc. -->
                     <p>
-                    Poher Communauté est une collectivité territoriale fédérant 11 communes. Cette structure mutualise les ressources et les compétences publiques pour un bassin de millier d'usagers. 
-                    Son service informatique administre le Système d'Information et assure le maintien en condition opérationnelle des infrastructures numériques nécessaires aux missions des agents.
+                        Poher Communauté est une collectivité territoriale fédérant 11 communes. Cette structure mutualise les ressources et les compétences publiques pour un bassin de millier d'usagers. 
+                        Son service informatique administre le Système d'Information et assure le maintien en condition opérationnelle des infrastructures numériques nécessaires aux missions des agents.
                     </p>
-
-                    <!-- SECTION 2 : VOS MISSIONS ET TÂCHES -->
                     <h2>📋 Mes Missions</h2>
-                    <!-- À remplacer : Listez vos principales missions et responsabilités -->
                     <p>
                         Durant mon stage ma principale mission a été de transféré tout un large document excel vers GLPI, c'est à dire de faire d'importer une base de données sur GLPI. Et pour pouvoir y parvenir et répondre aux contrainte demandé j'ai du utiliser 3 plugins de GLPI.
-                        A la fin de mon stage j'ai laissé une documentation sur le procédé et l'utilisation  des plugins que j'ai utilisé.
+                        A la fin de mon stage j'ai laissé une documentation sur le procédé et l'utilisation des plugins que j'ai utilisé.
                     </p>
-                    <!-- Vous pouvez ajouter une liste à puces si nécessaire -->
                     <ul>
-                        <li>Mission Principale : Importer les données présentes sur le document Excel vers GLPI, tout en répondant aux contraintes demandées et utilisation de 3 différents plugins sur GLPI ( DataInjection, GenericObject, Fields). </li>
-                        <li>Deuxième mission : Réalisation d'une documentation sur l'utilisation des plugins que j'ai utilisés lors du stage,pour laissé une trace écrite de mon travail.</li>
+                        <li>Mission Principale : Importer les données présentes sur le document Excel vers GLPI, tout en répondant aux contraintes demandées et utilisation de 3 différents plugins sur GLPI ( DataInjection, GenericObject, Fields).</li>
+                        <li>Deuxième mission : Réalisation d'une documentation sur l'utilisation des plugins que j'ai utilisés lors du stage, pour laissé une trace écrite de mon travail.</li>
                     </ul>
-
                 </section>
-
-                <!-- BARRE LATÉRALE - Informations clés en carte propre -->
                 <aside class="info-card">
-                    <!-- SECTION 1 : INFORMATIONS CLÉS -->
                     <div class="info-section">
                         <h3>📌 Informations Clés</h3>
                         <ul>
                             <li><strong>Entreprise :</strong> [Nom de l'entreprise 2]</li>
                             <li><strong>Secteur :</strong> [Secteur d'activité 2]</li>
                             <li><strong>Durée :</strong> 6 semaines</li>
-                            <li><strong>Localisation :</strong> Carhaix </li>
+                            <li><strong>Localisation :</strong> Carhaix</li>
                             <li><strong>Tuteur :</strong> [Nom du tuteur 2]</li>
                             <li><strong>Type :</strong> [Immobilisé/Alterné 2]</li>
                         </ul>
                     </div>
                 </aside>
-
             </div>
         </div>
 
-        <!-- CONTENU MISSIONS - Section séparée et complète -->
         <div style="padding: 0 40px 60px 40px;">
             <div class="missions-container">
-        
+
                 <!-- MISSION 1 -->
                 <div class="mission-block">
                     <div class="mission-header">
-                        <h3> Mission 1 : Importation d'un inventaire de données d'un document excel vers GLPI</h3>
+                        <h3>Mission 1 : Importation d'un inventaire de données d'un document excel vers GLPI</h3>
                     </div>
                     <div class="mission-content">
-                        <!-- Contexte Technique -->
                         <div class="mission-context">
-                            <h4> Contexte Technique</h4>
+                            <h4>Contexte Technique</h4>
                             <p>
-                                Le service informatique voulant mettre sur glpi tout un inventaire de données de quantitées importante stockées sur un document Excel, on m'a donc demandé  d'étudier le sujet.
+                                Le service informatique voulant mettre sur glpi tout un inventaire de données de quantitées importante stockées sur un document Excel, on m'a donc demandé d'étudier le sujet.
                                 Je me suis donc renseigné sur l'importation vers GLPI, j'ai du utilisé différents plugins de GLPI pour répondre au travail demandé, j'ai du modifier le document excel, et puis j'ai effectués les importations.
                             </p>
                         </div>
-        
-                        <!-- Image de la mission -->
-                        <div class="mission-image">
-                            <div class="mission-image-placeholder">
-                                <p>Image de démonstration ou capture d'écran<br><small>(Remplacez par votre image : src="chemin/vers/image.jpg")</small></p>
-                            </div>
-                        </div>
-        
-                        <!-- Actions Réalisées -->
                         <div class="mission-actions">
                             <h4>✅ Actions Réalisées</h4>
                             <ul>
                                 <li>Action 1 : Installation des plugins ( datainjection, GenericObject, Field)</li>
-                                <li>Action 2 : Ajout d'un onglet dédié aux tablettes avec le plugin Generic Object. </li>
+                                <li>Action 2 : Ajout d'un onglet dédié aux tablettes avec le plugin Generic Object.</li>
                                 <li>Action 3 : Création de champs supplémentaires avec le plugin Field</li>
                                 <li>Action 4 : Modification du document excel, et utilisation du plugin data-injection pour l'importation</li>
-                            <h4> Compétences </h4>
+                            </ul>
+                            <h4>Compétences</h4>
+                            <ul>
                                 <li>Compétence 1 : B1.1 - Gérer le patrimoine informatique</li>
                                 <li>Compétence 2 : B1.5 - Mettre à disposition des utilisateurs un service informatique</li>
-                            <h4> Documentation </h4>
                             </ul>
+                            <h4>Documentation</h4>
+                            <ul></ul>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- MISSION 2 -->
                 <div class="mission-block">
                     <div class="mission-header">
-                        <h3> Mission 2 : Rédaction de la documentation sur l'utilisation des 3 plugins </h3>
-                    </div> 
+                        <h3>Mission 2 : Rédaction de la documentation sur l'utilisation des 3 plugins</h3>
+                    </div>
                     <div class="mission-content">
-                        <!-- Contexte Technique -->
                         <div class="mission-context">
-                            <h4> Contexte Technique</h4>
+                            <h4>Contexte Technique</h4>
                             <p>
                                 Afin de laisser une trace de mon travail, j'ai rédigé une documentation sur l'utilisation des plugins que j'ai utilisés. Afin que le personnel du service informatique puisse s'y retrouver facilement.
                             </p>
                         </div>
-        
-                        <!-- Image de la mission -->
-                        <div class="mission-image">
-                            <div class="mission-image-placeholder">
-                                <p>Image de démonstration ou capture d'écran<br><small>(Remplacez par votre image : src="chemin/vers/image.jpg")</small></p>
-                            </div>
-                        </div>
-
-                        <!-- Actions Réalisées -->
                         <div class="mission-actions">
                             <h4>✅ Actions Réalisées</h4>
                             <ul>
                                 <li>Action 1 : Rédaction avec l'aide de mes production et des sources que j'avais utilisés</li>
-                            <h4> Compétences </h4>
+                            </ul>
+                            <h4>Compétences</h4>
+                            <ul>
                                 <li>Compétence 1 : B1.4 - Travailler en mode projet</li>
                                 <li>Compétence 2 : B1.6 - Organiser son développement professionnel</li>
-                            <h4> Documentation</h4>
+                            </ul>
+                            <h4>Documentation</h4>
+                            <ul>
                                 <li><a href="documentation-pcp/stage2doc/compte-rendu-glpi-plugins.pdf" target="_blank">CompteRendu-GLPIplugins.pdf</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
-        <!-- SECTION 3 : COMPÉTENCES ACQUISES - Après les missions -->
         <div style="padding: 0 40px 60px 40px;">
             <section class="main-text">
                 <h2>🎓 Compétences Développées</h2>
-                <!-- À remplacer : Détaillez les compétences acquises pendant votre stage -->
                 <p>
-                    Lors de ce stage j'ai donc au total développés les les compétences:
+                    Lors de ce stage j'ai donc au total développés les compétences :
                     <li>B1.1 - Gérer le patrimoine informatique</li>
                     <li>B1.4 - Travailler en mode projet</li>
                     <li>B1.5 - Mettre à disposition des utilisateurs un service informatique</li>
                     <li>B1.6 - Organiser son développement professionnel</li>
-                    
                 </p>
-
-                <!-- SECTION 5 : APPRENTISSAGES ET BILAN PERSONNEL -->
                 <h2>💡 Apprentissages et bref Bilan Personnel</h2>
-                <!-- À remplacer : Réfléchissez sur ce que vous avez appris et comment le stage vous a aidé -->
                 <p>
                     Intéressent, découverte de certaines fonctionnalités de GLPI.
                     Mais il n'y a pas vraiment eu d'autres missions différentes, un peu lassant.
                 </p>
-
-                <!-- Footer de la page stage -->
                 <div class="stage-footer">
                     <p>&copy; 2026 - Mon Portefeuille de Compétences | 
                        <a href="mailto:votremail@example.com">Me contacter</a>
@@ -647,7 +325,6 @@
                 </div>
             </section>
         </div>
-
     </main>
 </body>
 </html>
