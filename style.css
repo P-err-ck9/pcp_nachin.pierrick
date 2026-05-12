@@ -331,6 +331,109 @@ body {
 }
 
 /* ============================================================
+   SECTION COMPÉTENCES B1
+   ============================================================ */
+
+.competences-section {
+    background-color: var(--couleur-fond);
+    padding-bottom: 100px;
+}
+
+/* Conteneur principal des compétences */
+.competences-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Carte de compétence */
+.competence-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--couleur-bordure);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all var(--transition);
+}
+
+.competence-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    border-color: var(--couleur-primaire);
+}
+
+/* En-tête de la carte compétence */
+.competence-header {
+    background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-secondaire));
+    color: white;
+    padding: 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.competence-code {
+    display: inline-block;
+    background-color: var(--couleur-accent);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    min-width: 50px;
+    text-align: center;
+}
+
+.competence-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Contenu de la carte compétence */
+.competence-content {
+    padding: 25px;
+}
+
+.competence-description {
+    color: var(--couleur-texte-clair);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Niveau de maîtrise avec barre de progression */
+.competence-level {
+    margin-top: 20px;
+}
+
+.level-label {
+    display: block;
+    font-weight: 600;
+    color: var(--couleur-primaire);
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.level-bar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--couleur-bordure);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.level-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--couleur-primaire), var(--couleur-accent));
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* ============================================================
    SECTION VEILLE
    ============================================================ */
 
@@ -446,6 +549,11 @@ body {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 20px;
     }
+
+    .competences-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
 
 /* Téléphones (480px et moins) */
@@ -483,6 +591,31 @@ body {
         font-size: 1.1rem;
     }
 
+    .competences-container {
+        grid-template-columns: 1fr;
+    }
+
+    .competence-header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .competence-code {
+        width: 100%;
+    }
+
+    .competence-content {
+        padding: 20px;
+    }
+
+    .competence-title {
+        font-size: 1rem;
+    }
+
+    .competence-description {
+        font-size: 0.9rem;
+    }
+
     .contact-info {
         padding: 25px;
     }
@@ -502,6 +635,7 @@ body {
         padding: 8px;
     }
 }
+
 /* ============================================================
    SECTION DOCUMENTATION - Accès Documentation
    ============================================================ */
